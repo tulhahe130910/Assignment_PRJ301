@@ -8,91 +8,61 @@ and open the template in the editor.
     Author     : david
 */
 
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-weight: 300;
+body {
+    background-image: url('../image/background.jpg');
+    background-position: center;
+    background-size: cover;
+    -webkit-font-smoothing: antialiased;
+    font: normal 18px Roboto, arial, sans-serif;
+    font-family: 'Dancing Script', cursive!important;
 }
-
-body{
-    font-family: 'Source Sans Pro', sans-serif;
-    color: white;
-    font-weight: 300;
-}
-
-.wrapper{
-    background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    margin-top: -470px;
-    overflow: hidden;
-
-    &.form-success{
-        .container{
-            h1{
-                transform: translateY(85px);
-            }
-        }
-    }
-}
-
 .container{
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 80px 0;
-    height: 400px;
+    padding:110px;
+}
+::placeholder{
+    color: #ffffff!important;
+    opacity: 1;
+    font-size: 18px!important;
+}
+.h1{
+    color: white!important;
+}
+
+.form-login {
+    background-color: rgba(0, 0, 0, 0.55);
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color: #d2d2d2;
+    border-width: 5px;
+    color: white;
+    box-shadow: 0 1px 0 #cfcfcf;
+}
+.form-control {
+    background: transparent!important;
+    color: white!important;
+    font-size: 18px!important;
+}
+h4 {
+    border: 0 solid #fff;
+    border-bottom-width: 1px;
+    padding-bottom: 10px;
     text-align: center;
-    margin-top: 150px;
-
-    h1{
-        font-size: 40px;
-        transition-duration: 1s;
-        transition-timing-function: ease-in-put;
-        font-weight: 200;
-    }
+}    
+.form-control {
+    border-radius: 10px;
+}  
+.text-white {
+    color: white!important;
 }
-
-form{
-    padding: 20px 0;
-    position: relative;
-    z-index: 2;
-}
-input{
-    display: block;
-    appearance: none;
-    outline: 0;
-    border: 1px solid fade(white, 40%);
-    background-color: fade(white, 20%);
-    width: 250px;
-    border-radius: 3px;
-    padding: 10px 15px;
-    margin: 0 auto 10px auto;
-    display: block;
+.wrapper {
     text-align: center;
-    font-size: 18px;
-    color: black;
-    transition-duration: 0.25s;
-    font-weight: 300;
 }
-button{
-    appearance: none;
-    outline: 0;
-    background-color: white;
-    border: 0;
-    padding: 10px 15px;
-    color: green;
-    border-radius: 3px;
-    width: 250px;
-    cursor: pointer;
-    font-size: 18px;
-    transition-duration: 0.25s;
-
-    &:hover{
-        background-color: rgb(245, 247, 249);
-    }
+#btn-login{
+    font-size: 25px;
+}
+.group-btn{
+    font-size: 25px;
 }

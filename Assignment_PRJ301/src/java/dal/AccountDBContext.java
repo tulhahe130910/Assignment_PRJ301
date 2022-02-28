@@ -36,4 +36,27 @@ public class AccountDBContext extends DBContext{
         }
         return null;
     }
+    public int checkRole(String username, String url)
+    {
+        try {
+            String sql = "SELECT COUNT(*) as Total \n" +
+                "	FROM Account a INNER JOIN Account_Group ag ON a.username = ag.username\n" +
+                "					INNER JOIN [Group] g ON ag.gid = g.gid\n" +
+                "					INNER JOIN Group_Feature gf ON gf.gid = g.gid\n" +
+                "					INNER JOIN Feature f ON f.fid = gf.fid\n" +
+                "	WHERE a.username = ? AND f.url = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1,username);
+            stm.setString(2, url);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next())
+            {
+                return rs.getInt("Total");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
 }
