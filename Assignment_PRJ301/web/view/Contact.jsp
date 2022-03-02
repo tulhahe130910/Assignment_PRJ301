@@ -38,7 +38,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-xs-12">
-                        <div class="text-content">
+                        <div class="text-content"> <br>
                             <h2>Góp ý của quý khánh là nền tảng cho chúng tôi cải thiện và nâng cao chất lượng dịch vụ. chúng tôi luôn luôn tôn trọng mọi ý kiến của khánh hàng với tiêu chí khách hàng là thượng đế, Mọi ý kiến đóng góp vui lòng liên hệ với chúng tôi.</h2>
                             <p>Xin chân thành cảm ơn</p>
                             <p>Liên hệ với 9X-Store</p>
@@ -49,7 +49,7 @@
                             <p>Cầu Giấy, Hà Nội</p>
                             <p>Mở của lúc 8h30 sáng - đóng cửa 22h00 tối</p>
                             <p>- Chi nhánh Hồ Chí Minh -</p>
-                            <p>Coming soon....</p>
+                            <p>Coming soon....</p> <br>
                         </div>
                     </div>	
                     <div class="col-md-6 col-xs-12">
