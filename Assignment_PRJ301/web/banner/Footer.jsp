@@ -21,7 +21,7 @@
             <div class="container container-footer">
                 <div class="row row-footer">
                     <div class="col-md-4 col-Contact">
-                        <p class="koi-footer">9x-Store</p>
+                        <p class="koi-footer">9X-Store</p>
                         <div class="hr-footer"></div>
                         <p class="content-footer-p">Cung cấp các mặt hàng về thời trang<br> Được thiết kế bởi 9x team</p>
                         <a href="#" class="fb">Facebook</a>
