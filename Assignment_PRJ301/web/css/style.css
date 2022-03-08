@@ -584,7 +584,8 @@ header .top-link .top-link-dropdown .header-social li a {
     color: #fff !important; }
 .tab-menu-main .container-tab-menu .tab-content {
     /**tab content -row**/
-    display: none; }
+    display: block; 
+}
 .tab-menu-main .container-tab-menu .row-show {
     /**effect img**/
     /**text in img oder img**/ }
@@ -1032,7 +1033,9 @@ footer .container-footer .koi-phone .koiphone-item4 {
     margin-top: 40px;
     margin-bottom: 40px
 }
-
+.end-home{
+    margin-left: 170px;
+}
 /****end footer-end***/
 
 /*# sourceMappingURL=style.css.map */
