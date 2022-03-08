@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-12">
                         <div class="logo">
-                            <a href="#"><img src="../image/logo.png" alt="logo 9x"></a>
+                            <a href="#"><img src="image/logo.png" alt="logo 9x"></a>
                         </div>
                     </div>
                     <div class="col-sm-11 col-xs-12">

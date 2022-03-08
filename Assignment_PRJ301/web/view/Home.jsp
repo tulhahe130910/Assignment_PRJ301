@@ -14,8 +14,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/31a284aacb.js"></script>
-        <link href="../css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <title>Home Page</title>
     </head>
     <body>
@@ -26,7 +26,7 @@
                         <div class="col-md-12 col-xs-12">
                             <div class="carousel-inner slider-img">
                                 <div class="carousel-item active slider-item-img">
-                                    <img class="slide" src="../image/bg-home.jpg" alt="First slide">
+                                    <img class="slide" src="image/bg-home.jpg" alt="First slide">
                                     <div class="slide-caption d-none d-md d-block">
                                         <a class ="oder-slider" href="">đặt hàng</a>
                                     </div>
@@ -42,7 +42,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-xs-12 col-title-img">
                             <div class="div-title-img">
-                                <img src="../image/bg-gt.jpg" alt="Xu huong thoi trang">
+                                <img src="image/bg-gt.jpg" alt="Xu huong thoi trang">
                             </div>
                         </div>
                         <div class="col-sm-6 col-xs-12 col-tile-text">
@@ -74,30 +74,27 @@
                             </div>
                         </div>
                     </div>
-                    <!--                <div class="row row-btn-group">
-                                        <div class="col-sm-12 col-xs-12">
-                                            <ul class="button-tab-pannel button-group">
-                                                <li>
-                                                    <a class="tab-link" href="#tab-1">All product</a>
-                                                </li>
-                                                <li>
-                                                    <a class="tab-link" href="#tab-2">T-Shirt</a>
-                                                </li>
-                                                <li>
-                                                    <a class="tab-link" href="#tab-3">Pants/Shorts</a>
-                                                </li>
-                                                <li>
-                                                    <a class="tab-link" href="#tab-4">Accessories</a>
-                                                </li>                          
-                                            </ul>
-                                        </div>
-                                    </div>-->
-                    <div id="tab-1" class="row tab-content row-show ">
-                        <div class="row">
+                    <div class="row row-btn-group">
+                        <div class="col-sm-12 col-xs-12">
+                            <ul class="button-tab-pannel button-group">
+                                <li>
+                                    <a class="tab-link" href="#tab-1">All product</a>
+                                </li>
+                            <c:forEach items = "${requestScope.listCate}" var="cate">
+                                <li>
+                                    <a class="tab-link" href="#tab-2">${cate.name}</a>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </div>
+                </div>
+                <div id="tab-1" class="row tab-content row-show ">
+                    <div class="row">
+                        <c:forEach items = "${requestScope.listProduct}" var="product">
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 my-col-fod" >
                                 <div class="box-shadow">
                                     <div class="food-menu1-show">
-                                        <img src="../image/img1.jpg" alt="T-shirt">
+                                        <img src="image/${product.image}" alt="T-shirt">
                                         <div class="ovrly"></div>
                                         <div class="buttons-img">
                                             <a href="#" class="fa fa-link"></a>
@@ -105,9 +102,8 @@
                                     </div>
                                     <div class="box-food-text text-center">
                                         <div class="title-wrapper">
-                                            <span class="price-food">350,000VND</span>
-                                            <span class="price-food-no-sale">250,000VND</span>
-                                            <p class="product-title">BARISS T-shirt</p>
+                                            <span class="price-food-no-sale">${product.price}</span>
+                                            <p class="product-title">${product.name}</p>
                                         </div>
                                         <div class="add-to-cart-food">
                                             <a href="#" class="add-to-cart-a-food button-food-cart-more">Thêm vào Giỏ</a>
@@ -115,181 +111,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 my-col-fod ">
-                                <div class="box-shadow">
-                                    <div class="food-menu1-show">
-                                        <img src="../image/img2.jpg" alt="T-shirt">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons-img">
-                                            <a href="#" class="fa fa-link"></a>
-                                        </div>
-                                    </div>
-                                    <div class="box-food-text text-center">
-                                        <div class="title-wrapper">
-                                            <span class="price-food">300,000VND</span>
-                                            <span class="price-food-no-sale">180,000VND</span>
-                                            <p class="product-title">Essential Tshirt</p>
-                                        </div>
-                                        <div class="add-to-cart-food">
-                                            <a href="#" class="add-to-cart-a-food button-food-cart-more">Thêm vào Giỏ</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>	
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 my-col-fod ">
-                                <div class="box-shadow">
-                                    <div class="food-menu1-show">
-                                        <img src="../image/img3.jpg" alt="Goodvibe Tshirt">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons-img">
-                                            <a href="#" class="fa fa-link"></a>
-                                        </div>
-                                    </div>
-                                    <div class="box-food-text text-center">
-                                        <div class="title-wrapper">
-                                            <span class="price-food">350,000VND</span>
-                                            <span class="price-food-no-sale">250,000VND</span>
-                                            <p class="product-title">Goodvibe Tshirt</p>
-                                        </div>
-                                        <div class="add-to-cart-food">
-                                            <a href="#" class="add-to-cart-a-food button-food-cart-more">Thêm vào Giỏ</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 my-col-fod ">
-                                <div class="box-shadow">
-                                    <div class="food-menu1-show">
-                                        <img src="../image/img4.jpg" alt="Sea Cuban Shirt">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons-img">
-                                            <a href="#" class="fa fa-link"></a>
-                                        </div>
-                                    </div>
-                                    <div class="box-food-text text-center">
-                                        <div class="title-wrapper">
-                                            <span class="price-food">400,000VND</span>
-                                            <span class="price-food-no-sale">250,000VND</span>
-                                            <p class="product-title">Sea Cuban Shirt</p>
-                                        </div>
-                                        <div class="add-to-cart-food">
-                                            <a href="#" class="add-to-cart-a-food button-food-cart-more">Thêm vào Giỏ</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 my-col-fod ">
-                                <div class="box-shadow">
-                                    <div class="food-menu1-show">
-                                        <img src="../image/img5.jpg" alt="Race Track Shirt">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons-img">
-                                            <a href="#" class="fa fa-link"></a>
-                                        </div>
-                                    </div>
-                                    <div class="box-food-text text-center">
-                                        <div class="title-wrapper">
-                                            <span class="price-food">400,000VND</span>
-                                            <span class="price-food-no-sale">250,000VND</span>
-                                            <p class="product-title">Race Track Shirt</p>
-                                        </div>
-                                        <div class="add-to-cart-food">
-                                            <a href="#" class="add-to-cart-a-food button-food-cart-more">Thêm vào Giỏ</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 my-col-fod ">
-                                <div class="box-shadow">
-                                    <div class="food-menu1-show">
-                                        <img src="../image/img6.jpg" alt="Dusk Cuban Shirt">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons-img">
-                                            <a href="#" class="fa fa-link"></a>
-                                        </div>
-                                    </div>
-                                    <div class="box-food-text text-center">
-                                        <div class="title-wrapper">
-                                            <span class="price-food">400,000VND</span>
-                                            <span class="price-food-no-sale">250,000VND</span>
-                                            <p class="product-title">Dusk Cuban Shirt</p>
-                                        </div>
-                                        <div class="add-to-cart-food">
-                                            <a href="#" class="add-to-cart-a-food button-food-cart-more">Thêm vào Giỏ</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 my-col-fod ">
-                                <div class="box-shadow">
-                                    <div class="food-menu1-show">
-                                        <img src="../image/img14.jpg" alt="Essential Sweatpant">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons-img">
-                                            <a href="#" class="fa fa-link"></a>
-                                        </div>
-                                    </div>
-                                    <div class="box-food-text text-center">
-                                        <div class="title-wrapper">
-                                            <span class="price-food">470,000VND</span>
-                                            <span class="price-food-no-sale">400,000VND</span>
-                                            <p class="product-title">Essential Sweatpant</p>
-                                        </div>
-                                        <div class="add-to-cart-food">
-                                            <a href="#" class="add-to-cart-a-food button-food-cart-more">Thêm vào Giỏ</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 my-col-fod ">
-                                <div class="box-shadow">
-                                    <div class="food-menu1-show">
-                                        <img src="../image/img7.jpg" alt="Utility Short">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons-img">
-                                            <a href="#" class="fa fa-link"></a>
-                                        </div>
-                                    </div>
-                                    <div class="box-food-text text-center">
-                                        <div class="title-wrapper">
-                                            <span class="price-food">400,000VND</span>
-                                            <span class="price-food-no-sale">300,000VND</span>
-                                            <p class="product-title">Utility Short</p>
-                                        </div>
-                                        <div class="add-to-cart-food">
-                                            <a href="#" class="add-to-cart-a-food button-food-cart-more">Thêm vào Giỏ</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 my-col-fod ">
-                                <div class="box-shadow">
-                                    <div class="food-menu1-show">
-                                        <img src="../image/img12.jpg" alt="Fishing Hat">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons-img">
-                                            <a href="#" class="fa fa-link"></a>
-                                        </div>
-                                    </div>
-                                    <div class="box-food-text text-center">
-                                        <div class="title-wrapper">
-                                            <span class="price-food">300,000VND</span>
-                                            <span class="price-food-no-sale">190,000VND</span>
-                                            <p class="product-title">Fishing Hat</p>
-                                        </div>
-                                        <div class="add-to-cart-food">
-                                            <a href="#" class="add-to-cart-a-food button-food-cart-more">Thêm vào Giỏ</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>	
-                        </div>
+                        </c:forEach>
                     </div>
-                </div> <br>
-                <div>
-                    <img class="end-home" src="../image/ft-bgjpg.png">
-                </div> <br>
-            </div> 
-        <jsp:include flush="true" page="../banner/Footer.jsp"></jsp:include>
+                </div>
+            </div> <br>
+            <div>
+                <img class="end-home" src="image/ft-bgjpg.png">
+            </div> <br>
+        </div> 
+        <jsp:include flush="true" page="banner/Footer.jsp"></jsp:include>
     </body>
 </html>
