@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Home
-    Created on : Mar 6, 2022, 9:03:32 PM
+    Document   : Product
+    Created on : Mar 9, 2022, 5:33:26 PM
     Author     : david
 --%>
 
@@ -14,9 +14,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/31a284aacb.js"></script>
-        <link href="css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <title>Home Page</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <title>Product Page</title>
     </head>
     <body>
         <jsp:include flush="true" page="../banner/HeaderBanner.jsp"></jsp:include>
@@ -26,7 +26,7 @@
                         <div class="col-md-12 col-xs-12">
                             <div class="carousel-inner slider-img">
                                 <div class="carousel-item active slider-item-img">
-                                    <img class="slide" src="image/bg-home.jpg" alt="First slide">
+                                    <img class="slide" src="image/background.jpg" alt="First slide">
                                     <div class="slide-caption d-none d-md d-block">
                                         <a class ="oder-slider" href="">đặt hàng</a>
                                     </div>
@@ -36,31 +36,6 @@
                     </div> 
                 </div>
             </div>
-
-            <div class="menu-title-main">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 col-xs-12 col-title-img">
-                            <div class="div-title-img">
-                                <img src="image/bg-gt.jpg" alt="Xu huong thoi trang">
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-xs-12 col-tile-text">
-                            <div class="p-title">
-                                <p>Xu hướng thời trang mùa hè 2022</p>
-                                <p>Thời trang là một phạm trù hết sức đa dạng và phong phú. Thời trang không đơn giản chỉ là cách ăn mặc, 
-                                    cách mix match đồ hay việc diện đồ theo phong cách mình yêu thích. Trong thời trang luôn tiềm tàng những 
-                                    sự đổi mới, sự phá cách và sức sáng tạo đầy bất ngờ, ấn tượng. Với mỗi kiểu loại trang phục khác nhau, 
-                                    chúng sẽ mang đến những hiệu ứng thời trang khác nhau và giúp bạn nâng tầm phong cách của mình theo cách 
-                                    riêng của bạn.</p>
-                                <p>Thời trang tất nhiên phải đi liền với những xu hướng thời trang khác biệt, đa dạng và đón nhận sự quan 
-                                    tâm không hề nhỏ. Thời trang mùa hè năm nay cũng là chủ đề không kém phần “nóng hổi”.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="tab-menu-main">
                 <div class="container container-tab-menu">
                     <div class="row row-panel-title">

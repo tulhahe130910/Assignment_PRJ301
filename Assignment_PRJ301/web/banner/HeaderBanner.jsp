@@ -13,8 +13,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/31a284aacb.js"></script>
         <link href="../css/style.css" rel="stylesheet" type="text/css"/>
-        <title>Header Page</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <title>Header Page</title>
     </head>
     <body>
         <div class="main-header" id="site-header">
@@ -80,7 +80,7 @@
                                         <span class="cart-price">
                                             <span class="cart-amount price-amout"></span>
                                         </span>
-                                    </span><img src="../image/cart.png">
+                                    </span><img src="image/cart.png">
                                 </a>
                             </span>
                         </div>
