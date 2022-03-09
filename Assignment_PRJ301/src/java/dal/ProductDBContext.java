@@ -21,16 +21,16 @@ import model.Size;
 public class ProductDBContext extends DBContext {
 
     public List<Product> GetProduct() {
-        String sql = "Select p.product_id, p.product_name, p.product_price, p.size_id, s.size_name, p.product_quantity, p.product_image, p.category_id, c.category_name\n"
-                + "from [Product] p inner join Size s on (p.size_id = s.size_id)\n"
-                + "				inner join Category c on (p.category_id = c.category_id)";
+        String sql = " Select p.product_id, p.product_name, p.product_price, s.product_id, s.size_name, p.product_quantity, p.product_image, p.category_id, c.category_name from [Product] p \n"
+                + " inner join Size s on (s.product_id = p.Product_id)\n"
+                + " inner join Category c on (p.category_id = c.category_id)";
         List<Product> list = new ArrayList<>();
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Category c = new Category(rs.getInt("category_id"), rs.getString("category_name"));
-                Size s = new Size(rs.getInt("size_id"), rs.getString("size_name"));
+                Size s = new Size(rs.getInt("product_id"), rs.getString("size_name"));
                 Product p = new Product(rs.getInt("product_id"), rs.getString("product_name"), rs.getFloat("product_price"),
                         s, rs.getInt("product_quantity"), rs.getString("product_image"), c);
                 list.add(p);
