@@ -21,7 +21,7 @@ import model.Size;
  */
 public class CategoryDBContext extends DBContext{
     
-       public List<Category> GetAllCategory() {
+    public List<Category> GetAllCategory() {
         String sql = "select * from [Category]";
         List<Category> list = new ArrayList<>();
         try {
@@ -33,7 +33,7 @@ public class CategoryDBContext extends DBContext{
         } catch (SQLException e) {
         }
         return list;
-    }                    
+    }             
     public static void main(String[] args) {
         CategoryDBContext catedb = new CategoryDBContext();
         List<Category> category = catedb.GetAllCategory();

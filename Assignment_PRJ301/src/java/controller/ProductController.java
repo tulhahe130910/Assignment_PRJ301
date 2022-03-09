@@ -70,6 +70,7 @@ public class ProductController extends HttpServlet {
         List<Size> listSize = sizedb.GetAllSize();
         List<Product> listProduct = productdb.GetProduct();
         
+        //get all product + paging
         int numPs, numperPage, numpage, start, end, page;
         numPs = listProduct.size();
         numperPage = 9;
@@ -82,20 +83,48 @@ public class ProductController extends HttpServlet {
         }
         start = (page - 1) * numperPage;
         if (page * numperPage > numPs) {
+            end = numPs;
+        } else {
+            end = page * numperPage;
+        }
+        List<Product> listproduct1 = productdb.getListByPage(listProduct, start, end);
+
+        request.setAttribute("num", numpage);
+        request.setAttribute("page", page);
+        request.setAttribute("listProduct", listproduct1);
+        
+        // tab filter
+        String cid_raw = request.getParameter("cid");
+        if (cid_raw != null) {
+            int id = Integer.parseInt(cid_raw);
+            List<Product> listTab = productdb.GetListTabProduct(id);
+            numPs = listTab.size();
+            numperPage = 9;
+            numpage = numPs / numperPage + (numPs % numperPage == 0 ? 0 : 1);
+            tpage = request.getParameter("page");
+            try {
+                page = Integer.parseInt(tpage);
+            } catch (NumberFormatException e) {
+                page = 1;
+            }
+            start = (page - 1) * numperPage;
+            if (page * numperPage > numPs) {
                 end = numPs;
             } else {
                 end = page * numperPage;
             }
-        List<Product> listproduct1 = productdb.getListByPage(listProduct, start, end);
+            listproduct1 = productdb.getListByPage(listTab, start, end);
+
+            request.setAttribute("num", numpage);
+            request.setAttribute("page", page);
+            request.setAttribute("listProduct", listproduct1);
+        }
         
-        request.setAttribute("num", numpage);
-        request.setAttribute("page", page);
-        request.setAttribute("listProduct", listproduct1);
+        
         request.setAttribute("listCate", listCate);
-        request.setAttribute("listSize", listSize);     
+        request.setAttribute("listSize", listSize);
         request.getRequestDispatcher("view/Product.jsp").forward(request, response);
-        
-            
+
     }
 
     /**
