@@ -21,8 +21,7 @@ import model.Size;
 public class ProductDBContext extends DBContext {
 
     public List<Product> GetProduct() {
-        String sql = " Select p.product_id, p.product_name, p.product_price, s.product_id, s.size_name, p.product_quantity, p.product_image, p.category_id, c.category_name from [Product] p \n"
-                + " inner join Size s on (s.product_id = p.Product_id)\n"
+        String sql = "  Select p.product_id, p.product_name, p.product_price, p.product_quantity, p.product_image, p.category_id, c.category_name from [Product] p \n"
                 + " inner join Category c on (p.category_id = c.category_id)";
         List<Product> list = new ArrayList<>();
         try {
@@ -30,14 +29,21 @@ public class ProductDBContext extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Category c = new Category(rs.getInt("category_id"), rs.getString("category_name"));
-                Size s = new Size(rs.getInt("product_id"), rs.getString("size_name"));
                 Product p = new Product(rs.getInt("product_id"), rs.getString("product_name"), rs.getFloat("product_price"),
-                        s, rs.getInt("product_quantity"), rs.getString("product_image"), c);
+                        rs.getInt("product_quantity"), rs.getString("product_image"), c);
                 list.add(p);
             }
         } catch (SQLException e) {
         }
         return list;
+    }
+    
+    public List<Product> getListByPage(List<Product> list, int start, int end) {
+        ArrayList<Product> arr = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            arr.add(list.get(i));
+        }
+        return arr;
     }
 
     public static void main(String[] args) {

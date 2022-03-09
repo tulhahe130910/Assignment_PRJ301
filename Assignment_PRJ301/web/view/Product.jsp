@@ -43,7 +43,7 @@
                             <div class="tab-menu-wraper">
                                 <h3 class="tab-title">
                                     <b></b>
-                                    <span class="tab-title-content">NEW COLLECTION</span>
+                                    <span class="tab-title-content">FULL COLLECTION</span>
                                     <b></b>
                                 </h3>
                             </div>
@@ -53,11 +53,21 @@
                         <div class="col-sm-12 col-xs-12">
                             <ul class="button-tab-pannel button-group">
                                 <li>
-                                    <a class="tab-link">All product</a>
+                                    <a href="product" class="tab-link">All product</a>
                                 </li>
                             <c:forEach items = "${requestScope.listCate}" var="cate">
                                 <li>
-                                    <a class="tab-link">${cate.name}</a>
+                                    <a href="product?cid=${cate.id}" class="tab-link">${cate.name}</a>    
+                                </li>
+                            </c:forEach>
+                        </ul>
+                        <ul class="button-tab-pannel button-group">
+                            <li>
+                                <a class="tab-link">M</a>
+                            </li>
+                            <c:forEach items="${requestScope.listSize}" var="size">
+                                <li>
+<!--                                 <a class="tab-link">${size.name}</a> -->
                                 </li>
                             </c:forEach>
                         </ul>
@@ -88,12 +98,32 @@
                             </div>
                         </c:forEach>
                     </div>
+
+                    <div class="row page">
+                        <div class="col-lg-12 text-center">
+                            <div class="pagging">
+                                <c:if test="${page>1}">
+                                    <a class="gopage" href="product?page=${page-1}">Prev</a>
+                                </c:if>
+                                <c:forEach begin="${1}" end="${requestScope.num}" var="i">
+                                    <c:if test="${cid==null}">
+                                        <a class="${i==page?"activee":""}" href="product?page=${i}">${i}</a> 
+                                    </c:if>
+                                </c:forEach>
+                                <c:if test="${page<num}">
+                                    <a class="gopage" href="product?page=${page+1}">Next</a>
+                                </c:if>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
                 </div>
-            </div> <br>
-            <div>
-                <img class="end-home" src="image/ft-bgjpg.png">
-            </div> <br>
-        </div> 
-        <jsp:include flush="true" page="../banner/Footer.jsp"></jsp:include>
-    </body>
+            </div>
+        </div> <br>
+        <div>
+            <img class="end-home" src="image/ft-bgjpg.png">
+        </div> <br>
+    </div> 
+    <jsp:include flush="true" page="../banner/Footer.jsp"></jsp:include>
+</body>
 </html>

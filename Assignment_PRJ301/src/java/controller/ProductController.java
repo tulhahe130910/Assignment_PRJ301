@@ -7,6 +7,7 @@ package controller;
 
 import dal.CategoryDBContext;
 import dal.ProductDBContext;
+import dal.SizeDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Category;
 import model.Product;
+import model.Size;
 
 /**
  *
@@ -40,7 +42,7 @@ public class ProductController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProductController</title>");            
+            out.println("<title>Servlet ProductController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ProductController at " + request.getContextPath() + "</h1>");
@@ -62,12 +64,38 @@ public class ProductController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         CategoryDBContext categorydb = new CategoryDBContext();
+        SizeDBContext sizedb = new SizeDBContext();
         ProductDBContext productdb = new ProductDBContext();
         List<Category> listCate = categorydb.GetAllCategory();
+        List<Size> listSize = sizedb.GetAllSize();
         List<Product> listProduct = productdb.GetProduct();
+        
+        int numPs, numperPage, numpage, start, end, page;
+        numPs = listProduct.size();
+        numperPage = 9;
+        numpage = numPs / numperPage + (numPs % numperPage == 0 ? 0 : 1);
+        String tpage = request.getParameter("page");
+        try {
+            page = Integer.parseInt(tpage);
+        } catch (NumberFormatException e) {
+            page = 1;
+        }
+        start = (page - 1) * numperPage;
+        if (page * numperPage > numPs) {
+                end = numPs;
+            } else {
+                end = page * numperPage;
+            }
+        List<Product> listproduct1 = productdb.getListByPage(listProduct, start, end);
+        
+        request.setAttribute("num", numpage);
+        request.setAttribute("page", page);
+        request.setAttribute("listProduct", listproduct1);
         request.setAttribute("listCate", listCate);
-        request.setAttribute("listProduct", listProduct);
+        request.setAttribute("listSize", listSize);     
         request.getRequestDispatcher("view/Product.jsp").forward(request, response);
+        
+            
     }
 
     /**

@@ -74,22 +74,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row row-btn-group">
-                        <div class="col-sm-12 col-xs-12">
-                            <ul class="button-tab-pannel button-group">
-                                <li>
-                                    <a class="tab-link" href="#tab-1">All product</a>
-                                </li>
-                            <c:forEach items = "${requestScope.listCate}" var="cate">
-                                <li>
-                                    <a class="tab-link" href="#tab-2">${cate.name}</a>
-                                </li>
-                            </c:forEach>
-                        </ul>
-                    </div>
-                </div>
-                <div id="tab-1" class="row tab-content row-show ">
-                    <div class="row">
+
+                    <div id="tab-1" class="row tab-content row-show ">
+                        <div class="row">
                         <c:forEach items = "${requestScope.listProduct}" var="product">
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 my-col-fod" >
                                 <div class="box-shadow">
