@@ -53,11 +53,11 @@
                         <div class="col-sm-12 col-xs-12">
                             <ul class="button-tab-pannel button-group">
                                 <li>
-                                    <a class="tab-link" href="#tab-1">All product</a>
+                                    <a class="tab-link">All product</a>
                                 </li>
                             <c:forEach items = "${requestScope.listCate}" var="cate">
                                 <li>
-                                    <a class="tab-link" href="#tab-2">${cate.name}</a>
+                                    <a class="tab-link">${cate.name}</a>
                                 </li>
                             </c:forEach>
                         </ul>
@@ -72,7 +72,7 @@
                                         <img src="image/${product.image}" alt="T-shirt">
                                         <div class="ovrly"></div>
                                         <div class="buttons-img">
-                                            <a href="#" class="fa fa-link"></a>
+                                            <a class="fa fa-link"></a>
                                         </div>
                                     </div>
                                     <div class="box-food-text text-center">
@@ -81,7 +81,7 @@
                                             <p class="product-title">${product.name}</p>
                                         </div>
                                         <div class="add-to-cart-food">
-                                            <a href="#" class="add-to-cart-a-food button-food-cart-more">Thêm vào Giỏ</a>
+                                            <a class="add-to-cart-a-food button-food-cart-more">Thêm vào Giỏ</a>
                                         </div>
                                     </div>
                                 </div>

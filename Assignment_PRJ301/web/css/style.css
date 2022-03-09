@@ -1041,6 +1041,14 @@ footer .container-footer .koi-phone .koiphone-item4 {
 .end-home{
     margin-left: 170px;
 }
+.checkout-oder{
+    display: block;
+    text-align: center;
+    background: #e7272d;
+    text-decoration: none;
+    padding: 10px;
+    color: #fff;
+}
 /****end footer-end***/
 
 /*# sourceMappingURL=style.css.map */
