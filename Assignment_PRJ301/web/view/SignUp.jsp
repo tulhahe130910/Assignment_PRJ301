@@ -23,8 +23,7 @@
                     <input type="text" name="username" placeholder="Username" />
                     <input type="password" name="password" placeholder="Password" />
                     <input type="text" name="address" placeholder="Address" />              
-                    Birth of Date <br>
-                    <input type="date" name="birthdate" />
+                    <input type="text" name="email" placeholder="E-mail">
                     <input type="submit" name="signup_submit" value="Sign Up" />
                 </div>
                 <div class="right">
