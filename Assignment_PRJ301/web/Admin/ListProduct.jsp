@@ -92,7 +92,7 @@
                                                 </td>
                                                 <td>
                                                     <span class="order-status order-ready">
-                                                        <a href="#" onclick="doDelete{'${p.id}'}">Delete</a>
+                                                        <a href="#" onclick="doDelete('${lp.id}')">Delete</a>
                                                     </span>
                                                 </td>
                                             </tr>

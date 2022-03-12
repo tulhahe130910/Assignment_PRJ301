@@ -5,6 +5,7 @@
  */
 package AdminController;
 
+import dal.ProductDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -56,7 +57,15 @@ public class DeleteProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        String id_raw = request.getParameter("id");
+        int id;
+        try {
+            id = Integer.parseInt(id_raw);
+            ProductDBContext productdb = new ProductDBContext();
+            productdb.DeleteProduct(id);
+            response.sendRedirect("list-product");
+        } catch (Exception e) {
+        }
     }
 
     /**

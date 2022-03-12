@@ -65,6 +65,16 @@ public class ProductDBContext extends DBContext {
         return list;
     }
 
+    public void DeleteProduct(int id) {
+        String sql = "Delete From Product WHERE Product_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            st.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+
     public static void main(String[] args) {
         ProductDBContext prodcutdb = new ProductDBContext();
         List<Product> product = prodcutdb.GetListTabProduct(1);
@@ -73,4 +83,5 @@ public class ProductDBContext extends DBContext {
         }
 
     }
+
 }
