@@ -75,6 +75,23 @@ public class ProductDBContext extends DBContext {
         }
     }
 
+    public Product GetProductById(int id) {
+        String sql = "  Select p.product_id, p.product_name, p.product_price, p.product_quantity, p.product_image, p.category_id, c.category_name from [Product] p \n"
+                + " inner join Category c on (p.category_id = c.category_id) WHERE p.Product_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1,id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category c = new Category(rs.getInt("category_id"), rs.getString("category_name"));
+                Product p = new Product(rs.getInt("product_id"), rs.getString("product_name"), rs.getFloat("product_price"),
+                        rs.getInt("product_quantity"), rs.getString("product_image"), c);
+                return p;
+            }
+        } catch (SQLException e) {
+        }
+        return null;
+    }
     public static void main(String[] args) {
         ProductDBContext prodcutdb = new ProductDBContext();
         List<Product> product = prodcutdb.GetListTabProduct(1);
@@ -82,6 +99,21 @@ public class ProductDBContext extends DBContext {
             System.out.println(product.get(0).getName());
         }
 
+    }
+
+    public void UpdateProduct(Product p) {
+        String sql = "Update Product set Product_name =?, Product_price=?, Product_quantity=?,Product_image=?,category_id=? WHERE Product_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1,p.getName());
+            st.setFloat(2, p.getPrice());
+            st.setInt(3, p.getQuantity());
+            st.setString(4,p.getImage());
+            st.setInt(5, p.getCategory().getId());
+            st.setInt(6,p.getId());
+            st.executeUpdate();
+        } catch (SQLException e) {
+        }
     }
 
 }
