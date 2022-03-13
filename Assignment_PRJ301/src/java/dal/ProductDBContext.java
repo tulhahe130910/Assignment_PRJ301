@@ -92,16 +92,8 @@ public class ProductDBContext extends DBContext {
         }
         return null;
     }
-    public static void main(String[] args) {
-        ProductDBContext prodcutdb = new ProductDBContext();
-        List<Product> product = prodcutdb.GetListTabProduct(1);
-        for (int i = 0; i < product.size(); i++) {
-            System.out.println(product.get(0).getName());
-        }
-
-    }
-
-    public void UpdateProduct(Product p) {
+    
+     public void UpdateProduct(Product p) {
         String sql = "Update Product set Product_name =?, Product_price=?, Product_quantity=?,Product_image=?,category_id=? WHERE Product_id = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -115,5 +107,12 @@ public class ProductDBContext extends DBContext {
         } catch (SQLException e) {
         }
     }
-
+     
+    public static void main(String[] args) {
+        ProductDBContext prodcutdb = new ProductDBContext();
+        List<Product> product = prodcutdb.GetListTabProduct(1);
+        for (int i = 0; i < product.size(); i++) {
+            System.out.println(product.get(0).getName());
+        }
+    }
 }
