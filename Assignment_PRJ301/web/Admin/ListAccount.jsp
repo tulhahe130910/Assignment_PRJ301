@@ -24,8 +24,8 @@
         <link href="css/grid.css" rel="stylesheet" type="text/css"/>
         <script type="text/javascript">
             function doDelete(id){
-                if(confirm("Are u sure to delete product with id="+id+" ?")){
-                    window.location="delete-product?id="+id;
+                if(confirm("Are you sure want to delete account with id="+id+" ?")){
+                    window.location="delete-account?id="+id;
                 }
             }
         </script>
@@ -64,6 +64,9 @@
                                             <th>Phone</th>
                                             <th>Address</th>
                                             <th>Status</th>
+                                            <th>View</th>
+                                            <th>Update</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -80,6 +83,21 @@
                                                 <td>${la.phone}</td>
                                                 <td>${la.address}</td>
                                                 <td>${la.role}</td>
+                                                <td>
+                                                    <span class="order-status order-ready">
+                                                        <a href="">View</a>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="order-status order-ready">
+                                                        <a href="update-account?id=${la.id}" >Update</a>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="order-status order-ready">
+                                                        <a href="#" onclick="doDelete('${la.id}')">Delete</a>
+                                                    </span>
+                                                </td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>

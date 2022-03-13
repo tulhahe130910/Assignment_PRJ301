@@ -24,7 +24,7 @@
         <link href="css/grid.css" rel="stylesheet" type="text/css"/>
         <script type="text/javascript">
             function doDelete(id){
-                if(confirm("Are u sure to delete product with id="+id+" ?")){
+                if(confirm("Are you sure want to delete product with id="+id+" ?")){
                     window.location="delete-product?id="+id;
                 }
             }

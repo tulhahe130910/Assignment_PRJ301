@@ -9,16 +9,16 @@
 <!-- SIDEBAR -->
 <div class="sidebar">
     <div class="sidebar-logo">
-        <img src="./images/logo-lg.png" alt="Comapny logo">
+        <img src="image/logo.png" alt="Comapny logo">
         <div class="sidebar-close" id="sidebar-close">
             <i class='bx bx-left-arrow-alt'></i>
         </div>
     </div>
     <div class="sidebar-user">
         <div class="sidebar-user-info">
-            <img src="./images/user-image.jpg" alt="User picture" class="profile-image">
+            <img src="image/user-image-2.png" alt="User picture" class="profile-image">
             <div class="sidebar-user-name">
-                anh tuat
+                anh tu
             </div>
         </div>
         <button class="btn btn-outline">

@@ -61,7 +61,15 @@ public class AccountDBContext extends DBContext{
         return list;
     }
     
-    
+    public void DeleteAccount(int id) {
+        String sql = "Delete From Account WHERE account_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            st.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
     
     public int checkRole(String username, String url)
     {
@@ -86,4 +94,5 @@ public class AccountDBContext extends DBContext{
         }
         return -1;
     }
+
 }
