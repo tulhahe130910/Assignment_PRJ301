@@ -64,7 +64,6 @@
                                             <th>Phone</th>
                                             <th>Address</th>
                                             <th>Status</th>
-                                            <th>View</th>
                                             <th>Update</th>
                                             <th>Delete</th>
                                         </tr>
@@ -83,11 +82,6 @@
                                                 <td>${la.phone}</td>
                                                 <td>${la.address}</td>
                                                 <td>${la.role}</td>
-                                                <td>
-                                                    <span class="order-status order-ready">
-                                                        <a href="">View</a>
-                                                    </span>
-                                                </td>
                                                 <td>
                                                     <span class="order-status order-ready">
                                                         <a href="update-account?id=${la.id}" >Update</a>
