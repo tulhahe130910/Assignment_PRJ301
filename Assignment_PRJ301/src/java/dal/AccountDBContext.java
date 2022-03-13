@@ -18,17 +18,16 @@ import model.Account;
  *
  * @author david
  */
-public class AccountDBContext extends DBContext{
-    public Account getAccount(String username, String password)
-    {
+public class AccountDBContext extends DBContext {
+
+    public Account getAccount(String username, String password) {
         try {
             String sql = "SELECT account_name,account_password FROM Account WHERE account_name = ? AND account_password = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setString(1,username);
-            stm.setString(2,password);
+            stm.setString(1, username);
+            stm.setString(2, password);
             ResultSet rs = stm.executeQuery();
-            if(rs.next())
-            {
+            if (rs.next()) {
                 Account account = new Account();
                 account.setUsername(rs.getString("account_name"));
                 account.setPassword(rs.getString("account_password"));
@@ -38,7 +37,7 @@ public class AccountDBContext extends DBContext{
         }
         return null;
     }
-    
+
     public List<Account> GetListAccount() {
         String sql = "Select * From Account";
         List<Account> list = new ArrayList<>();
@@ -60,7 +59,46 @@ public class AccountDBContext extends DBContext{
         }
         return list;
     }
-    
+
+    public Account GetAccountById(int id) {
+        String sql = "Select * From Account WHERE account_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Account a = new Account();
+                a.setId(rs.getInt("account_id"));
+                a.setUsername(rs.getString("account_name"));
+                a.setPassword(rs.getString("account_password"));
+                a.setEmail(rs.getString("account_email"));
+                a.setPhone(rs.getString("account_phone"));
+                a.setAddress(rs.getString("account_address"));
+                a.setRole(rs.getBoolean("account_role"));
+                return a;
+            }
+        } catch (SQLException e) {
+        }
+        return null;
+    }
+
+    public void UpdateAccount(Account a) {
+        String sql = "Update Account set account_name =?, account_password=?, account_email=?, account_phone=?,account_address=?, "
+                + "account_role=? WHERE account_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, a.getUsername());
+            st.setString(2, a.getPassword());
+            st.setString(3, a.getEmail());
+            st.setString(4, a.getPhone());
+            st.setString(5, a.getAddress());
+            st.setBoolean(6, a.isRole());
+            st.setInt(7, a.getId());
+            st.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+
     public void DeleteAccount(int id) {
         String sql = "Delete From Account WHERE account_id = ?";
         try {
@@ -70,25 +108,23 @@ public class AccountDBContext extends DBContext{
         } catch (SQLException e) {
         }
     }
-    
-    public int checkRole(String username, String url)
-    {
+
+    public int checkRole(String username, String url) {
         try {
-            String sql = "SELECT COUNT(*) as Total \n" +
-                "	FROM Account a INNER JOIN Account_Group ag ON a.username = ag.username\n" +
-                "					INNER JOIN [Group] g ON ag.gid = g.gid\n" +
-                "					INNER JOIN Group_Feature gf ON gf.gid = g.gid\n" +
-                "					INNER JOIN Feature f ON f.fid = gf.fid\n" +
-                "	WHERE a.username = ? AND f.url = ?";
+            String sql = "SELECT COUNT(*) as Total \n"
+                    + "	FROM Account a INNER JOIN Account_Group ag ON a.username = ag.username\n"
+                    + "					INNER JOIN [Group] g ON ag.gid = g.gid\n"
+                    + "					INNER JOIN Group_Feature gf ON gf.gid = g.gid\n"
+                    + "					INNER JOIN Feature f ON f.fid = gf.fid\n"
+                    + "	WHERE a.username = ? AND f.url = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setString(1,username);
+            stm.setString(1, username);
             stm.setString(2, url);
             ResultSet rs = stm.executeQuery();
-            if(rs.next())
-            {
+            if (rs.next()) {
                 return rs.getInt("Total");
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Update Product
-    Created on : Mar 12, 2022, 9:51:02 PM
+    Document   : UpdateAccount
+    Created on : Mar 14, 2022, 2:00:53 AM
     Author     : david
 --%>
 
@@ -41,33 +41,37 @@
             </div>
             <div class="main-content">
                 <div class="row">                    
-                    <form action="update-product" method="post">
-                        <c:forEach items="${requestScope.list}" var="i">
+                    <form action="update-account" method="post">
+                        <c:forEach items="${requestScope.list}" var="l">
                             <table>
                                 <tr>
                                     <td>ID</td>
-                                    <td><input type="text" name="id" value="${i.id}"></td>
+                                    <td><input type="text" name="id" value="${l.id}"></td>
                                 </tr>
                                 <tr>
-                                    <td>Product Name</td>
-                                    <td><input type="text" name="name" value="${i.name}"></td>
+                                    <td>User Name</td>
+                                    <td><input type="text" name="username" value="${l.username}"></td>
                                 </tr>
                                 <tr>
-                                    <td>Price</td>
-                                    <td><input type="number" name="price" value="${i.price}"></td>
+                                    <td>Password</td>
+                                    <td><input type="password" name="password" value="${l.password}"></td>
                                 </tr>
 
                                 <tr>
-                                    <td>Quanlity</td>
-                                    <td><input type="number" name="quantity" value="${i.quantity}"></td>
+                                    <td>Email</td>
+                                    <td><input type="text" name="email" value="${l.email}"></td>
                                 </tr>
                                 <tr>
-                                    <td>IMAGE</td>
-                                    <td><input type="text" name="image" value="${i.image}"></td>
+                                    <td>Phone</td>
+                                    <td><input type="text" name="phone" value="${l.phone}"></td>
                                 </tr>
                                 <tr>
-                                    <td>Category</td>
-                                    <td><input type="number" name="category" value="${i.category.id}"></td>
+                                    <td>Address</td>
+                                    <td><input type="text" name="address" value="${l.address}"></td>
+                                </tr>
+                                <tr>
+                                    <td>Status</td>
+                                    <td><input type="text" name="role" value="${l.role}"></td>
                                 </tr>
                             </c:forEach>
                             <tr>
@@ -90,3 +94,4 @@
         <script src="../js/app.js"></script>
     </body>
 </html>
+

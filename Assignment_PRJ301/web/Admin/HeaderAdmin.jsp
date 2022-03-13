@@ -36,7 +36,7 @@
         <li class="sidebar-submenu">
             <a href="list-account" class="sidebar-menu-dropdown">
                 <i class='bx bx-user-circle'></i>
-                <span>account</span>
+                <span>Manage Account</span>
                 <div class="dropdown-icon"></div>
             </a>
             <ul class="sidebar-menu sidebar-menu-dropdown-content">
