@@ -88,7 +88,7 @@
                                     <div class="box-food-text text-center">
                                         <div class="title-wrapper">
                                             <span class="price-food-no-sale">${product.price}</span>
-                                            <p class="product-title">${product.name}</p>
+                                            <a href="detail-product?id=${product.id}"><p class="product-title">${product.name}</p></a>
                                         </div>
                                         <div class="add-to-cart-food">
                                             <a class="add-to-cart-a-food button-food-cart-more">Thêm vào Giỏ</a>

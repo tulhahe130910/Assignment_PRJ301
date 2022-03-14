@@ -52,6 +52,10 @@
         <servlet-name>UpdateAccount</servlet-name>
         <servlet-class>AdminController.UpdateAccount</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DetailProduct</servlet-name>
+        <servlet-class>controller.DetailProduct</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>UpdateAccount</servlet-name>
         <url-pattern>/update-account</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailProduct</servlet-name>
+        <url-pattern>/detail-product</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
