@@ -64,10 +64,10 @@
                             
                         </div>
                         <div class="col-md-7 col-xs-12">
-                            <form action="" method="POST" id="Search-dropdown">
+                            <form action="" method="GET" id="Search-dropdown">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Bạn muốn mua gì?" name="seach-dropdow" id="search-dropdown-input">
-                                    <button type="submit" value="Search" class="btn-search" name="Search">
+                                    <input type="text" class="form-control" placeholder="Bạn muốn mua gì?" name="search" id="search-dropdown-input">
+                                    <button type="submit" value="Search" class="btn-search" name="search">
                                         <i class="fa fa-search"></i>
                                     </button>   
                                 </div>

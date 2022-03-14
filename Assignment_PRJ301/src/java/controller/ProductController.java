@@ -120,6 +120,32 @@ public class ProductController extends HttpServlet {
             request.setAttribute("listProduct", listproduct1);
         }
         
+        // Search
+        String search = request.getParameter("search");
+        if (search != null) {
+            search = search.trim();
+            List<Product> listSearch = productdb.SearchProductByName(search);
+            numPs = listSearch.size();
+            numperPage = 9;
+            numpage = numPs / numperPage + (numPs % numperPage == 0 ? 0 : 1);
+            tpage = request.getParameter("page");
+            try {
+                page = Integer.parseInt(tpage);
+            } catch (NumberFormatException e) {
+                page = 1;
+            }
+            start = (page - 1) * numperPage;
+            if (page * numperPage > numPs) {
+                end = numPs;
+            } else {
+                end = page * numperPage;
+            }
+            listproduct1 = productdb.getListByPage(listSearch, start, end);
+            request.setAttribute("num", numpage);
+            request.setAttribute("page", page);
+            request.setAttribute("listProduct", listproduct1);
+        }
+        
         
         request.setAttribute("listCate", listCate);
         request.setAttribute("listSize", listSize);

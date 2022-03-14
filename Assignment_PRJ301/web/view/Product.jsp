@@ -60,17 +60,7 @@
                                     <a href="product?cid=${cate.id}" class="tab-link">${cate.name}</a>    
                                 </li>
                             </c:forEach>
-                        </ul>
-                        <ul class="button-tab-pannel button-group">
-                            <li>
-                                <a class="tab-link">M</a>
-                            </li>
-                            <c:forEach items="${requestScope.listSize}" var="size">
-                                <li>
-<!--                                 <a class="tab-link">${size.name}</a> -->
-                                </li>
-                            </c:forEach>
-                        </ul>
+                        </ul>                      
                     </div>
                 </div>
                 <div id="tab-1" class="row tab-content row-show ">
@@ -87,7 +77,7 @@
                                     </div>
                                     <div class="box-food-text text-center">
                                         <div class="title-wrapper">
-                                            <span class="price-food-no-sale">${product.price}</span>
+                                            <span class="price-food-no-sale">${product.price} VND</span>
                                             <a href="detail-product?id=${product.id}"><p class="product-title">${product.name}</p></a>
                                         </div>
                                         <div class="add-to-cart-food">

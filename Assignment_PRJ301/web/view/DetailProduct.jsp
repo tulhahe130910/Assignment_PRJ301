@@ -35,6 +35,7 @@
                             <img src="image/${p.image}" alt="Image" class="img-fluid">
                             </div>
                             <div class="col-md-6" style="margin-top: 200px">
+                                <div class="asds" style="margin-left: 50px">
                                 <h2 class="text-black">${p.name}</h2><br>
                                 <p><strong class="text-primary h4">${p.price}VND</strong></p><br>
                                 </c:forEach>
@@ -61,6 +62,7 @@
                                     </div>
                                 </div>
                                 <p><a href="buy?id=1" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
+                            </div>
                             </div>
                     </div>
                 </div>

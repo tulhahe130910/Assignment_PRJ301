@@ -108,6 +108,26 @@ public class ProductDBContext extends DBContext {
         }
     }
      
+    public List<Product> SearchProductByName(String key) {
+        String sql = "Select p.product_id, p.product_name, p.product_price, p.product_quantity, p.product_image, p.category_id, c.category_name from [Product] p \n"
+                + " inner join Category c on (p.category_id = c.category_id) where p.Product_name Like ?";
+        List<Product> list = new ArrayList<>();
+        try {
+
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%" + key + "%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category c = new Category(rs.getInt("category_id"), rs.getString("category_name"));
+                Product p = new Product(rs.getInt("product_id"), rs.getString("product_name"), rs.getFloat("product_price"),
+                        rs.getInt("product_quantity"), rs.getString("product_image"), c);
+                list.add(p);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
+     
     public static void main(String[] args) {
         ProductDBContext prodcutdb = new ProductDBContext();
         List<Product> product = prodcutdb.GetListTabProduct(1);
