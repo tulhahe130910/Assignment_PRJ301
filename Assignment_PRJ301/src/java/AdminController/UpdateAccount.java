@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Account;
 
 /**
@@ -39,7 +40,7 @@ public class UpdateAccount extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateAccount</title>");            
+            out.println("<title>Servlet UpdateAccount</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet UpdateAccount at " + request.getContextPath() + "</h1>");
@@ -60,14 +61,21 @@ public class UpdateAccount extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AccountDBContext accountdb = new AccountDBContext();
-        List<Account> list = new ArrayList<>();
-        String id_raw = request.getParameter("id");
-        int id = Integer.parseInt(id_raw);
-        Account a = accountdb.GetAccountById(id);
-        list.add(a);
-        request.setAttribute("list", list);
-        request.getRequestDispatcher("Admin/UpdateAccount.jsp").forward(request, response);
+        HttpSession session = request.getSession(true);
+        Account a = (Account) session.getAttribute("admin");
+        if (a == null) {
+            PrintWriter out = response.getWriter();
+            out.println("Access denied");
+        } else {
+            AccountDBContext accountdb = new AccountDBContext();
+            List<Account> list = new ArrayList<>();
+            String id_raw = request.getParameter("id");
+            int id = Integer.parseInt(id_raw);
+            Account acc = accountdb.GetAccountById(id);
+            list.add(acc);
+            request.setAttribute("list", list);
+            request.getRequestDispatcher("Admin/UpdateAccount.jsp").forward(request, response);
+        }
     }
 
     /**

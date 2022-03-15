@@ -14,6 +14,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Account;
 import model.Category;
 import model.Product;
 
@@ -40,7 +42,7 @@ public class UpdateProduct extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateProduct</title>");            
+            out.println("<title>Servlet UpdateProduct</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet UpdateProduct at " + request.getContextPath() + "</h1>");
@@ -61,15 +63,21 @@ public class UpdateProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProductDBContext productdb = new ProductDBContext();
-        List<Product> list = new ArrayList<>();
-        String id_raw = request.getParameter("id");
-        int id = Integer.parseInt(id_raw);
-        Product p = productdb.GetProductById(id);
-        list.add(p);
-        request.setAttribute("list", list);
-        request.getRequestDispatcher("Admin/UpdateProduct.jsp").forward(request, response);
-        
+        HttpSession session = request.getSession(true);
+        Account a = (Account) session.getAttribute("admin");
+        if (a == null) {
+            PrintWriter out = response.getWriter();
+            out.println("Access denied");
+        } else {
+            ProductDBContext productdb = new ProductDBContext();
+            List<Product> list = new ArrayList<>();
+            String id_raw = request.getParameter("id");
+            int id = Integer.parseInt(id_raw);
+            Product p = productdb.GetProductById(id);
+            list.add(p);
+            request.setAttribute("list", list);
+            request.getRequestDispatcher("Admin/UpdateProduct.jsp").forward(request, response);
+        }
     }
 
     /**
@@ -94,7 +102,7 @@ public class UpdateProduct extends HttpServlet {
             float price = Float.parseFloat(price_raw);
             int quantity = Integer.parseInt(quantity_raw);
             int category = Integer.parseInt(category_raw);
-            
+
             Category c = new Category(category);
             Product p = new Product(id, name, price, quantity, image, c);
             ProductDBContext productdb = new ProductDBContext();

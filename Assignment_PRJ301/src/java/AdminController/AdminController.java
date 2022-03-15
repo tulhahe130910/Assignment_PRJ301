@@ -14,6 +14,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Account;
 import model.Category;
 
 /**
@@ -60,6 +62,12 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession(true);
+        Account a = (Account) session.getAttribute("admin");
+        if (a == null){
+            PrintWriter out = response.getWriter();
+            out.println("Access denied");
+        }else{
         List<Category> listCate = new CategoryDBContext().GetAllCategory();
         request.setAttribute("listCate", listCate);
         List<Integer> listCountCate = new ArrayList<>();
@@ -69,7 +77,7 @@ public class AdminController extends HttpServlet {
         }
         request.setAttribute("listcount", listCountCate);
         request.getRequestDispatcher("Admin/HomeAdmin.jsp").forward(request, response);
-        
+        }
     }
 
     /**

@@ -13,6 +13,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Account;
 import model.Product;
 
 /**
@@ -38,7 +40,7 @@ public class ListProduct extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListProduct</title>");            
+            out.println("<title>Servlet ListProduct</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ListProduct at " + request.getContextPath() + "</h1>");
@@ -59,10 +61,17 @@ public class ListProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProductDBContext productdb = new ProductDBContext();
-        List<Product> listproduct = productdb.GetProduct();
-        request.setAttribute("listproduct", listproduct);
-        request.getRequestDispatcher("Admin/ListProduct.jsp").forward(request, response);
+        HttpSession session = request.getSession(true);
+        Account a = (Account) session.getAttribute("admin");
+        if (a == null) {
+            PrintWriter out = response.getWriter();
+            out.println("Access denied");
+        } else {
+            ProductDBContext productdb = new ProductDBContext();
+            List<Product> listproduct = productdb.GetProduct();
+            request.setAttribute("listproduct", listproduct);
+            request.getRequestDispatcher("Admin/ListProduct.jsp").forward(request, response);
+        }
     }
 
     /**

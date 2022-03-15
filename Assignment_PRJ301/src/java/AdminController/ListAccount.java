@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Account;
 
 /**
@@ -38,7 +39,7 @@ public class ListAccount extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListAccount</title>");            
+            out.println("<title>Servlet ListAccount</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ListAccount at " + request.getContextPath() + "</h1>");
@@ -59,10 +60,17 @@ public class ListAccount extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AccountDBContext accountdb = new AccountDBContext();
-        List<Account> listacc = accountdb.GetListAccount();
-        request.setAttribute("listaccount", listacc);
-        request.getRequestDispatcher("Admin/ListAccount.jsp").forward(request, response);
+        HttpSession session = request.getSession(true);
+        Account a = (Account) session.getAttribute("admin");
+        if (a == null) {
+            PrintWriter out = response.getWriter();
+            out.println("Access denied");
+        } else {
+            AccountDBContext accountdb = new AccountDBContext();
+            List<Account> listacc = accountdb.GetListAccount();
+            request.setAttribute("listaccount", listacc);
+            request.getRequestDispatcher("Admin/ListAccount.jsp").forward(request, response);
+        }
     }
 
     /**
