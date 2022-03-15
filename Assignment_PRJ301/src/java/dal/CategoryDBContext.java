@@ -33,10 +33,30 @@ public class CategoryDBContext extends DBContext{
         } catch (SQLException e) {
         }
         return list;
-    }             
+    }    
+    
+    public int CountCategory(int id) {
+        String sql = "Select count(*) as 'countcate' from Product where category_id=?";
+        int n = 0;
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                n = rs.getInt("countcate");
+                return n;
+            }
+        } catch (SQLException e) {
+        }
+        return n;
+    }
+    
+    
     public static void main(String[] args) {
         CategoryDBContext catedb = new CategoryDBContext();
         List<Category> category = catedb.GetAllCategory();
         System.out.println(category.get(0).getName());
     }   
+
+    
 }

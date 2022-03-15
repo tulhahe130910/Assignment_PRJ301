@@ -5,12 +5,16 @@
  */
 package AdminController;
 
+import dal.CategoryDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Category;
 
 /**
  *
@@ -56,7 +60,16 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        List<Category> listCate = new CategoryDBContext().GetAllCategory();
+        request.setAttribute("listCate", listCate);
+        List<Integer> listCountCate = new ArrayList<>();
+        for (int i = 1; i <= listCate.size(); i++) {
+            int n = new CategoryDBContext().CountCategory(i);
+            listCountCate.add(n);
+        }
+        request.setAttribute("listcount", listCountCate);
         request.getRequestDispatcher("Admin/HomeAdmin.jsp").forward(request, response);
+        
     }
 
     /**

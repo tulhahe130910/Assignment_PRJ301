@@ -78,18 +78,11 @@
         <li class="sidebar-submenu">
             <a href="#" class="sidebar-menu-dropdown">
                 <i class='bx bx-cog'></i>
-                <span>settings</span>
+                <span>Manage Category</span>
                 <div class="dropdown-icon"></div>
             </a>
-            <ul class="sidebar-menu sidebar-menu-dropdown-content">
-                <li>
-                    <a href="#" class="darkmode-toggle" id="darkmode-toggle">
-                        darkmode
-                        <span class="darkmode-switch"></span>
-                    </a>
-                </li>
-            </ul>
         </li>
     </ul>
+     <script src="js/app.js"></script>
     <!-- END SIDEBAR MENU -->
 </div>
