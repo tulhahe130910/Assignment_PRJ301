@@ -39,18 +39,7 @@
                 <span>Manage Account</span>
                 <div class="dropdown-icon"></div>
             </a>
-            <ul class="sidebar-menu sidebar-menu-dropdown-content">
-                <li>
-                    <a href="list-account">
-                        edit profile
-                    </a>
-                </li>
-                <li>
-                    <a href="list-account">
-                        account settings
-                    </a>
-                </li>
-            </ul>
+            
         </li>
         <li class="sidebar-submenu">
             <a href="list-order" class="sidebar-menu-dropdown">

@@ -59,7 +59,7 @@ public abstract class BaseAuthenticationController extends HttpServlet {
         } else {
             String url = request.getServletPath();
             AccountDBContext db = new AccountDBContext();
-            int role = db.checkRole(account.getUsername(), url);
+//            int role = db.checkRole(account.getUsername(), url);
             return role >= 1;
         }
     }

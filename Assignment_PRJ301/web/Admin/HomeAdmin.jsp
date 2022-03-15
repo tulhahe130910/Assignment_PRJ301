@@ -21,8 +21,8 @@
         <!-- BOXICONS -->
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <!-- APP CSS -->
-        <link href="../css/app.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/grid.css" rel="stylesheet" type="text/css"/>
+        <link href="css/app.css" rel="stylesheet" type="text/css"/>
+        <link href="css/grid.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <body>
@@ -344,7 +344,8 @@
         <!-- APEX CHART -->
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <!-- APP JS -->
-        <script src="../js/app.js"></script>
+        <script src="js/app.js"></script>
+        <script></script>
 
     </body>
 
