@@ -10,6 +10,7 @@ import dal.ProductDBContext;
 import dal.SizeDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -141,6 +142,43 @@ public class ProductController extends HttpServlet {
                 end = page * numperPage;
             }
             listproduct1 = productdb.getListByPage(listSearch, start, end);
+            request.setAttribute("num", numpage);
+            request.setAttribute("page", page);
+            request.setAttribute("listProduct", listproduct1);
+        }
+        
+        //Sort Product
+        String sort_raw = request.getParameter("sort");
+        if (sort_raw != null) {
+            List<Product> listSort = new ArrayList<>();
+            int sort = Integer.parseInt(sort_raw);
+            //Sort by price asc
+            if(sort == 1){
+                listSort = productdb.SortProductByPriceAsc();
+            }else if(sort == 2){
+                listSort = productdb.SortProductByPriceDesc();
+            }else if(sort == 3){
+                listSort = productdb.SortProductByNameAsc();
+            }else if(sort == 4){
+                listSort = productdb.SortProductByNameDesc();
+            }
+            
+            numPs = listSort.size();
+            numperPage = 9;
+            numpage = numPs / numperPage + (numPs % numperPage == 0 ? 0 : 1);
+            tpage = request.getParameter("page");
+            try {
+                page = Integer.parseInt(tpage);
+            } catch (NumberFormatException e) {
+                page = 1;
+            }
+            start = (page - 1) * numperPage;
+            if (page * numperPage > numPs) {
+                end = numPs;
+            } else {
+                end = page * numperPage;
+            }
+            listproduct1 = productdb.getListByPage(listSort, start, end);
             request.setAttribute("num", numpage);
             request.setAttribute("page", page);
             request.setAttribute("listProduct", listproduct1);

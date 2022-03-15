@@ -49,12 +49,35 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row row-btn-group">
-                        <div class="col-sm-12 col-xs-12">
-                            <ul class="button-tab-pannel button-group">
-                                <li>
-                                    <a href="product" class="tab-link">All product</a>
-                                </li>
+                </div>
+                <div class="container-fluid">
+                    <div class="Sort" style="float:left">                                    
+                        <form id="f" action="product?sort=${requestScope.sort}?page=${requestScope.page}">
+                        <select name="sort" style="padding:5px" onchange="document.getElementById('f').submit()"> 
+                            <option>Sort by</option>
+                            <option value="1" <c:if test="${sort==1}">
+                                    selected
+                                </c:if> >Price (Low -> High)</option>
+                            <option value="2" <c:if test="${sort==2}">
+                                    selected
+                                </c:if> >Price (High -> Low)</option>
+                            <option value="3" <c:if test="${sort==3}">
+                                    selected
+                                </c:if> >A -> Z</option>
+                            <option value="4" <c:if test="${sort==4}">
+                                    selected
+                                </c:if> >Z -> A</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <div class="container container-tab-menu">
+                <div class="row row-btn-group">
+                    <div class="col-sm-12 col-xs-12">
+                        <ul class="button-tab-pannel button-group">
+                            <li>
+                                <a href="product" class="tab-link">All product</a>
+                            </li>
                             <c:forEach items = "${requestScope.listCate}" var="cate">
                                 <li>
                                     <a href="product?cid=${cate.id}" class="tab-link">${cate.name}</a>    

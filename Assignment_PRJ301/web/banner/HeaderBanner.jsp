@@ -61,7 +61,7 @@
                 <div class="container dropdown-container-header">
                     <div class="row">
                         <div class="col-md-2 col-xs-12 hidden-xs">
-                            
+
                         </div>
                         <div class="col-md-7 col-xs-12">
                             <form action="" method="GET" id="Search-dropdown">
@@ -69,7 +69,7 @@
                                     <input type="text" class="form-control" placeholder="Bạn muốn mua gì?" name="search" id="search-dropdown-input">
                                     <button type="submit" value="Search" class="btn-search" name="search">
                                         <i class="fa fa-search"></i>
-                                    </button>   
+                                    </button>  
                                 </div>
                             </form>
                         </div>

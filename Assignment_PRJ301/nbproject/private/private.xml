@@ -4,13 +4,19 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/AdminController/DeleteProduct.java</file>
-            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/web/Admin/UpdateProduct.jsp</file>
-            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/AdminController/UpdateProduct.java</file>
-            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/dal/AccountDBContext.java</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/web/banner/HeaderBanner.jsp</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/web/view/DetailProduct.jsp</file>
             <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/web/Admin/UpdateAccount.jsp</file>
-            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/web/Admin/ListAccount.jsp</file>
-            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/AdminController/ListAccount.java</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/dal/ProductDBContext.java</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/web/view/Product.jsp</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/web/view/GioiThieu.jsp</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/web/view/Contact.jsp</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/controller/ProductController.java</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/model/Size.java</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/controller/DetailProduct.java</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/web/view/Home.jsp</file>
             <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/AdminController/UpdateAccount.java</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/model/Product.java</file>
         </group>
     </open-files>
 </project-private>
