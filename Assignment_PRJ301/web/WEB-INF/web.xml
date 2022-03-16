@@ -72,6 +72,18 @@
         <servlet-name>DeleteCategory</servlet-name>
         <servlet-class>AdminController.DeleteCategory</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddProduct</servlet-name>
+        <servlet-class>AdminController.AddProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddAccount</servlet-name>
+        <servlet-class>AdminController.AddAccount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddCategory</servlet-name>
+        <servlet-class>AdminController.AddCategory</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AboutController</servlet-name>
         <url-pattern>/about</url-pattern>
@@ -143,6 +155,18 @@
     <servlet-mapping>
         <servlet-name>DeleteCategory</servlet-name>
         <url-pattern>/delete-category</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProduct</servlet-name>
+        <url-pattern>/add-product</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddAccount</servlet-name>
+        <url-pattern>/add-account</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCategory</servlet-name>
+        <url-pattern>/add-category</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

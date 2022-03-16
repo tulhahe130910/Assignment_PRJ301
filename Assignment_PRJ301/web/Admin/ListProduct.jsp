@@ -62,7 +62,7 @@
                                             <th>Price</th>
                                             <th>Category</th>
                                             <th>Quantity</th>
-                                            <th>View</th>
+<!--                                            <th>Add</th>-->
                                             <th>Update</th>
                                             <th>Delete</th>
                                         </tr>
@@ -80,11 +80,11 @@
                                                 <td>${lp.price}</td>
                                                 <td>${lp.category.name}</td>
                                                 <td>${lp.quantity}</td>
-                                                <td>
+<!--                                                <td>
                                                     <span class="order-status order-ready">
-                                                        <a href="">View</a>
+                                                        <a href="add-product">Add</a>
                                                     </span>
-                                                </td>
+                                                </td>-->
                                                 <td>
                                                     <span class="order-status order-ready">
                                                         <a href="update-product?id=${lp.id}" >Update</a>

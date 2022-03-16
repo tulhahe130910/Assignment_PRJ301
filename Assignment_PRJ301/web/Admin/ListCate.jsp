@@ -60,7 +60,6 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Name</th>
-                                            <th>Add</th>
                                             <th>Update</th>
                                             <th>Delete</th>
                                         </tr>
@@ -73,11 +72,6 @@
                                                     <div class="order-owner">
                                                         <span>${lc.name}</span>
                                                     </div>
-                                                </td>
-                                                <td>
-                                                    <span class="order-status order-ready">
-                                                        <a href="">Add</a>
-                                                    </span>
                                                 </td>
                                                 <td>
                                                     <span class="order-status order-ready">
