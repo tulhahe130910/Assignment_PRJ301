@@ -60,6 +60,10 @@
         <servlet-name>LoginControler</servlet-name>
         <servlet-class>Authentication.LoginControler</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListCategory</servlet-name>
+        <servlet-class>AdminController.ListCategory</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AboutController</servlet-name>
         <url-pattern>/about</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>LoginControler</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListCategory</servlet-name>
+        <url-pattern>/list-category</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

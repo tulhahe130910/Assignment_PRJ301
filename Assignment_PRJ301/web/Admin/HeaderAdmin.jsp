@@ -39,6 +39,18 @@
                 <span>Manage Account</span>
                 <div class="dropdown-icon"></div>
             </a>
+            <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                <li>
+                    <a href="list-account">
+                        list account
+                    </a>
+                </li>
+                <li>
+                    <a href="add-account">
+                        add account
+                    </a>
+                </li>
+            </ul>
             
         </li>
         <li class="sidebar-submenu">
@@ -76,11 +88,23 @@
         </li>
 
         <li class="sidebar-submenu">
-            <a href="#" class="sidebar-menu-dropdown">
-                <i class='bx bx-cog'></i>
+            <a href="list-category" class="sidebar-menu-dropdown">
+                <i class='bx bx-category'></i>
                 <span>Manage Category</span>
                 <div class="dropdown-icon"></div>
             </a>
+            <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                <li>
+                    <a href="list-category">
+                        list category
+                    </a>
+                </li>
+                <li>
+                    <a href="add-category">
+                        add category
+                    </a>
+                </li>
+            </ul>
         </li>
     </ul>
      <script src="js/app.js"></script>

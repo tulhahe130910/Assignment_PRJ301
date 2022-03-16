@@ -1,11 +1,12 @@
 <%-- 
-    Document   : ListProduct
-    Created on : Mar 12, 2022, 9:51:02 PM
+    Document   : ListCate
+    Created on : Mar 16, 2022, 3:41:55 PM
     Author     : david
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,8 +25,8 @@
         <link href="css/grid.css" rel="stylesheet" type="text/css"/>
         <script type="text/javascript">
             function doDelete(id){
-                if(confirm("Are you sure want to delete product with id="+id+" ?")){
-                    window.location="delete-product?id="+id;
+                if(confirm("Are you sure want to delete category with id="+id+" ?")){
+                    window.location="delete-category?id="+id;
                 }
             }
         </script>
@@ -51,7 +52,7 @@
                         <!-- ORDERS TABLE -->
                         <div class="box">
                             <div class="box-header">
-                                List Product
+                                List Category
                             </div>
                             <div class="box-body overflow-scroll">
                                 <table>
@@ -59,40 +60,33 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Name</th>
-                                            <th>Price</th>
-                                            <th>Category</th>
-                                            <th>Quantity</th>
-                                            <th>View</th>
+                                            <th>Add</th>
                                             <th>Update</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach items="${requestScope.listproduct}" var="lp">
+                                        <c:forEach items="${requestScope.listcate}" var="lc">
                                             <tr>
-                                                <td>${lp.id}</td>
+                                                <td>${lc.id}</td>
                                                 <td>
                                                     <div class="order-owner">
-                                                        <img src="image/${lp.image}" alt="user image">
-                                                        <span>${lp.name}</span>
+                                                        <span>${lc.name}</span>
                                                     </div>
                                                 </td>
-                                                <td>${lp.price}</td>
-                                                <td>${lp.category.name}</td>
-                                                <td>${lp.quantity}</td>
                                                 <td>
                                                     <span class="order-status order-ready">
-                                                        <a href="">View</a>
+                                                        <a href="">Add</a>
                                                     </span>
                                                 </td>
                                                 <td>
                                                     <span class="order-status order-ready">
-                                                        <a href="update-product?id=${lp.id}" >Update</a>
+                                                        <a href="update-cate?id=${lc.id}" >Update</a>
                                                     </span>
                                                 </td>
                                                 <td>
                                                     <span class="order-status order-ready">
-                                                        <a href="#" onclick="doDelete('${lp.id}')">Delete</a>
+                                                        <a href="#" onclick="doDelete('${lc.id}')">Delete</a>
                                                     </span>
                                                 </td>
                                             </tr>
