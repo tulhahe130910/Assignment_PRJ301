@@ -68,6 +68,17 @@ public class CategoryDBContext extends DBContext{
         return null;
     }
     
+    public void AddCategory(Category c) {
+        String sql = "INSERT INTO [Category] ([category_id],[category_name]) VALUES (? ,?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, c.getId());
+            st.setString(2, c.getName());
+            st.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+    
     public void UpdateCategory(Category c) {
         String sql = "Update Category set category_name =? WHERE category_id = ?";
         try {

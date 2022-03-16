@@ -5,14 +5,18 @@
  */
 package AdminController;
 
+import dal.CategoryDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
+import model.Category;
 
 /**
  *
@@ -64,13 +68,9 @@ public class AddCategory extends HttpServlet {
             PrintWriter out = response.getWriter();
             out.println("Access denied");
         } else {
-//            ProductDBContext productdb = new ProductDBContext();
-//            List<Product> list = new ArrayList<>();
-//            String id_raw = request.getParameter("id");
-//            int id = Integer.parseInt(id_raw);
-//            Product p = productdb.GetProductById(id);
-//            list.add(p);
-//            request.setAttribute("list", list);
+            CategoryDBContext categorydb = new CategoryDBContext();
+            List<Category> list = new ArrayList<>();
+            request.setAttribute("list", list);
             request.getRequestDispatcher("Admin/AddCate.jsp").forward(request, response);
         }
     }
@@ -86,7 +86,15 @@ public class AddCategory extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String id_raw = request.getParameter("id");
+        String catename = request.getParameter("catename");
+        int id = Integer.parseInt(id_raw);
+        Category c = new Category();
+        c.setId(id);
+        c.setName(catename);
+        CategoryDBContext categorydb = new CategoryDBContext();
+        categorydb.AddCategory(c);
+        response.sendRedirect("list-category");
     }
 
     /**
