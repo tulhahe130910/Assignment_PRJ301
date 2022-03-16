@@ -64,6 +64,10 @@
         <servlet-name>ListCategory</servlet-name>
         <servlet-class>AdminController.ListCategory</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateCategory</servlet-name>
+        <servlet-class>AdminController.UpdateCategory</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AboutController</servlet-name>
         <url-pattern>/about</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>ListCategory</servlet-name>
         <url-pattern>/list-category</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCategory</servlet-name>
+        <url-pattern>/update-cate</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

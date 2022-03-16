@@ -51,12 +51,39 @@ public class CategoryDBContext extends DBContext{
         return n;
     }
     
+    public Category GetCategoryById(int id) {
+        String sql = "Select * From Category WHERE category_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category c = new Category();
+                c.setId(rs.getInt("category_id"));
+                c.setName(rs.getString("category_name"));
+                return c;
+            }
+        } catch (SQLException e) {
+        }
+        return null;
+    }
+    
+    public void UpdateCategory(Category c) {
+        String sql = "Update Category set category_name =? WHERE category_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, c.getName());
+            st.setInt(2, c.getId());
+            st.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+    
     
     public static void main(String[] args) {
         CategoryDBContext catedb = new CategoryDBContext();
         List<Category> category = catedb.GetAllCategory();
         System.out.println(category.get(0).getName());
     }   
-
     
 }
