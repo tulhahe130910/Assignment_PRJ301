@@ -68,6 +68,10 @@
         <servlet-name>UpdateCategory</servlet-name>
         <servlet-class>AdminController.UpdateCategory</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteCategory</servlet-name>
+        <servlet-class>AdminController.DeleteCategory</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AboutController</servlet-name>
         <url-pattern>/about</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>UpdateCategory</servlet-name>
         <url-pattern>/update-cate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCategory</servlet-name>
+        <url-pattern>/delete-category</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

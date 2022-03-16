@@ -5,7 +5,7 @@
  */
 package AdminController;
 
-import dal.AccountDBContext;
+import dal.CategoryDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,7 +19,7 @@ import model.Account;
  *
  * @author david
  */
-public class DeleteAccount extends HttpServlet {
+public class DeleteCategory extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +38,10 @@ public class DeleteAccount extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DeleteAccount</title>");
+            out.println("<title>Servlet DeleteCategory</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DeleteAccount at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet DeleteCategory at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -69,9 +69,9 @@ public class DeleteAccount extends HttpServlet {
             int id;
             try {
                 id = Integer.parseInt(id_raw);
-                AccountDBContext accountdb = new AccountDBContext();
-                accountdb.DeleteAccount(id);
-                response.sendRedirect("list-account");
+                CategoryDBContext categorydb = new CategoryDBContext();
+                categorydb.DeleteCategory(id);
+                response.sendRedirect("list-category");
             } catch (Exception e) {
             }
         }

@@ -79,6 +79,16 @@ public class CategoryDBContext extends DBContext{
         }
     }
     
+    public void DeleteCategory(int id) {
+        String sql = "Delete From Category WHERE category_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            st.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+    
     
     public static void main(String[] args) {
         CategoryDBContext catedb = new CategoryDBContext();
