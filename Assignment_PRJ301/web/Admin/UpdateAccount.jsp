@@ -71,7 +71,7 @@
                                 </tr>
                                 <tr>
                                     <td>Status</td>
-                                    <td><input type="text" name="role" value="${l.role}"></td>
+                                    <td><input type="number" name="role" value="${l.role}"></td>
                                 </tr>
                             </c:forEach>
                             <tr>

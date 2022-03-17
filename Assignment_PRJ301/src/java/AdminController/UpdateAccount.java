@@ -98,7 +98,7 @@ public class UpdateAccount extends HttpServlet {
         String role_raw = request.getParameter("role");
         try {
             int id = Integer.parseInt(id_raw);
-            boolean role = Boolean.parseBoolean(role_raw);
+            boolean role = "1".equals(role_raw);
             Account a = new Account(id, username, password, email, phone, address, role);
             AccountDBContext accountdb = new AccountDBContext();
             accountdb.UpdateAccount(a);

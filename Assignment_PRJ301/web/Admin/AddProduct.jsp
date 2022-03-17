@@ -48,19 +48,19 @@
                             <form class="forms-sample" action="add-product" method="post">
                                 <div class="form-group">
                                     <label for="InputId">ID</label>
-                                    <input type="text" class="form-control" id="InputId" placeholder="ID">
+                                    <input type="text" name="id" class="form-control" id="InputId" placeholder="ID">
                                 </div>
                                 <div class="form-group">
                                     <label for="InputName">Name</label>
-                                    <input type="text" class="form-control" id="InputName" placeholder="Name">
+                                    <input type="text" name="name" class="form-control" id="InputName" placeholder="Name">
                                 </div>
                                 <div class="form-group">
                                     <label for="InputPrice">Price</label>
-                                    <input type="text" class="form-control" id="InputPrice" placeholder="Price">
+                                    <input type="text" name="price" class="form-control" id="InputPrice" placeholder="Price">
                                 </div>
                                 <div class="form-group">
                                     <label for="InputQuantity">Quantity</label>
-                                    <input type="text" class="form-control" id="InputQuantity" placeholder="Quantity">
+                                    <input type="text" name="quantity" class="form-control" id="InputQuantity" placeholder="Quantity">
                                 </div>
                                 <div class="form-group">
                                     <label>Image product upload</label>
@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="InputCategory">Category</label>
-                                    <input type="text" class="form-control" id="InputCategory" placeholder="Category">
+                                    <input type="text" name="category" class="form-control" id="InputCategory" placeholder="Category">
                                 </div>
                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
                                 <button class="btn btn-dark">Cancel</button>
