@@ -104,7 +104,7 @@
                                             <a href="detail-product?id=${product.id}"><p class="product-title">${product.name}</p></a>
                                         </div>
                                         <div class="add-to-cart-food">
-                                            <a class="add-to-cart-a-food button-food-cart-more">Thêm vào Giỏ</a>
+                                            <a href="buy?id=${product.id}" class="add-to-cart-a-food button-food-cart-more">Thêm vào Giỏ</a>
                                         </div>
                                     </div>
                                 </div>

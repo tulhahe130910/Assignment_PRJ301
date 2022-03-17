@@ -5,8 +5,10 @@
  */
 package controller;
 
+import dal.ProductDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,12 +16,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Cart;
+import model.Product;
 
 /**
  *
  * @author david
  */
-public class CartController extends HttpServlet {
+public class BuyController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +41,10 @@ public class CartController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CartController</title>");            
+            out.println("<title>Servlet BuyController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CartController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet BuyController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,19 +63,21 @@ public class CartController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        int id = Integer.parseInt(request.getParameter("id"));
         Map<Integer,Cart> carts = (Map<Integer,Cart>) session.getAttribute("carts");
-        if(carts != null){
-            float total = 0;
-            for (Map.Entry<Integer, Cart> entry : carts.entrySet()) {
-                Integer key = entry.getKey();
-                Cart valuecart = entry.getValue();
-                total += valuecart.getProduct().getPrice() * valuecart.getQuantity();
-            }
-            session.setAttribute("carts", carts);
-            session.setAttribute("total", total);
+        if(carts == null){
+            carts = new LinkedHashMap<>();
         }
-
-        request.getRequestDispatcher("view/Cart.jsp").forward(request, response);
+        //if product in cart => update quantity
+        if(carts.containsKey(id)){
+            int old_quantity = carts.get(id).getQuantity();
+            carts.get(id).setQuantity(old_quantity + 1);
+        }else{
+            Product p = new ProductDBContext().GetProductById(id);
+            carts.put(id, new Cart(p,1));
+        }
+        session.setAttribute("carts", carts);
+        response.sendRedirect("product");
     }
 
     /**

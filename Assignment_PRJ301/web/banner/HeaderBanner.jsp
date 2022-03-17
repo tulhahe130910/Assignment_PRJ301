@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -75,12 +77,12 @@
                         </div>
                         <div class="col-md-3 col-xs-12 hidden-xs">
                             <span class="cart-koi cart-koi-img">
-                                <a href="">
+                                <a href="cart">
                                     <span class="hd-cart-title">GIỎ HÀNG  
                                         <span class="cart-price">
                                             <span class="cart-amount price-amout"></span>
                                         </span>
-                                    </span><img src="image/cart.png">
+                                    </span><img src="image/cart.png">${sessionScope.carts.size()}
                                 </a>
                             </span>
                         </div>

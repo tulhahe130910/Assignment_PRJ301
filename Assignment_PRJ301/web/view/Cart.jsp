@@ -62,19 +62,19 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                        <c:forEach items="${sessionScope.carts}" var="c">
                                             <tr>
-                                                <td><img src="#" style="width: 300px; height: 150px;"></td>
-                                                <td>T-shirt</td>
-                                                <td>200000</td>
-                                                <td>1</td>
-                                                <td>200000</td>
+                                                <td><img src="image/${c.value.product.image}" style="width: 300px; height: 300px;"></td>
+                                                <td>${c.value.product.name}</td>
+                                                <td>${c.value.product.price}</td>
+                                                <td>${c.value.quantity}</td>
+                                                <td>${c.value.quantity*c.value.product.price}</td>
                                             </tr>
-
+                                        </c:forEach>
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th colspan="4" class="text-center">Tổng tiền :</th>
+                                                <th colspan="4" class="text-center">${total}</th>
                                                 <th class="total-price text-center">
                                                     <span class="total">
                                                         <strong></strong>
@@ -94,7 +94,7 @@
                             <table class="table table-bordered">
                                 <tbody>
                                     <tr>
-                                        <td class="text-right">Thành tiền:</td>
+                                        <td class="text-right">${total}</td>
                                         <td class="text-right"><strong></strong></td>
                                     </tr>
 
@@ -103,7 +103,7 @@
                                         <td class="text-right"><strong>30000</strong></td> 
                                     </tr>
                                     <tr>
-                                        <td class="text-right">Tổng số:</td>
+                                        <td class="text-right">${total+30000}</td>
                                         <td class="text-right"><strong></strong></td>
                                     </tr>
                                 </tbody>

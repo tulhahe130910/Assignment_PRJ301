@@ -84,6 +84,10 @@
         <servlet-name>AddCategory</servlet-name>
         <servlet-class>AdminController.AddCategory</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuyController</servlet-name>
+        <servlet-class>controller.BuyController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AboutController</servlet-name>
         <url-pattern>/about</url-pattern>
@@ -167,6 +171,10 @@
     <servlet-mapping>
         <servlet-name>AddCategory</servlet-name>
         <url-pattern>/add-category</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuyController</servlet-name>
+        <url-pattern>/buy</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
