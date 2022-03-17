@@ -64,17 +64,21 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Image product upload</label>
-                                    <input type="file" name="img[]" class="file-upload-default">
+                                    <input type="file" name="image" class="file-upload-default">
                                     <div class="input-group col-xs-12">
-                                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image Product">
-                                        <span class="input-group-append">
-                                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                                        </span>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="InputCategory">Category</label>
-                                    <input type="text" name="category" class="form-control" id="InputCategory" placeholder="Category">
+                                    <select name="category">
+                                        <option value="0">
+                                            Category
+                                        </option>
+                                        <c:forEach items="${requestScope.listcate}" var="lc">
+                                            <option value="${lc.id}">
+                                                ${lc.name}
+                                            </option>
+                                        </c:forEach>
+                                    </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
                                 <button class="btn btn-dark">Cancel</button>
@@ -93,6 +97,6 @@
         <!-- APEX CHART -->
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <!-- APP JS -->
-        
+
     </body>
 </html>

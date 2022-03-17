@@ -5,6 +5,7 @@
  */
 package AdminController;
 
+import dal.CategoryDBContext;
 import dal.ProductDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
+import model.Category;
 import model.Product;
 
 /**
@@ -68,13 +70,9 @@ public class AddProduct extends HttpServlet {
             PrintWriter out = response.getWriter();
             out.println("Access denied");
         } else {
-//            ProductDBContext productdb = new ProductDBContext();
-//            List<Product> list = new ArrayList<>();
-//            String id_raw = request.getParameter("id");
-//            int id = Integer.parseInt(id_raw);
-//            Product p = productdb.GetProductById(id);
-//            list.add(p);
-//            request.setAttribute("list", list);
+            CategoryDBContext categorydb = new CategoryDBContext();
+            List<Category> listcate = categorydb.GetAllCategory();
+            request.setAttribute("listcate", listcate);
             request.getRequestDispatcher("Admin/AddProduct.jsp").forward(request, response);
         }
     }
@@ -90,7 +88,25 @@ public class AddProduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String id_raw = request.getParameter("id");
+        String name = request.getParameter("name");
+        String price_raw = request.getParameter("price");
+        String quantity_raw = request.getParameter("quantity");
+        String image = request.getParameter("image");
+        String category_raw = request.getParameter("category");
+        try {
+            int id = Integer.parseInt(id_raw);
+            float price = Float.parseFloat(price_raw);
+            int quantity = Integer.parseInt(quantity_raw);
+            int category = Integer.parseInt(category_raw);
+
+            Category c = new Category(category);
+            Product p = new Product(id, name, price, quantity, image, c);
+            ProductDBContext productdb = new ProductDBContext();
+            productdb.AddProduct(p);
+            response.sendRedirect("list-product");
+        } catch (Exception e) {
+        }
     }
 
     /**

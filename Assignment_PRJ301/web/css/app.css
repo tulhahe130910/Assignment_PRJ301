@@ -466,6 +466,28 @@ table td {
 .overlay.active {
     display: block;
 }
+.form-group label {
+    font-size: 0.875rem;
+    line-height: 1;
+    vertical-align: top; }
+
+.form-group.has-danger .form-control, .form-group.has-danger .asColorPicker-input, .form-group.has-danger .dataTables_wrapper select, .dataTables_wrapper .form-group.has-danger select, .form-group.has-danger .jsgrid .jsgrid-table .jsgrid-filter-row input[type=text], .jsgrid .jsgrid-table .jsgrid-filter-row .form-group.has-danger input[type=text],
+.form-group.has-danger .jsgrid .jsgrid-table .jsgrid-filter-row select, .jsgrid .jsgrid-table .jsgrid-filter-row .form-group.has-danger select, .form-group.has-danger .jsgrid .jsgrid-table .jsgrid-filter-row input[type=number], .jsgrid .jsgrid-table .jsgrid-filter-row .form-group.has-danger input[type=number], .form-group.has-danger .select2-container--default .select2-selection--single,
+.select2-container--default .form-group.has-danger .select2-selection--single, .form-group.has-danger .select2-container--default .select2-selection--single .select2-search__field, .select2-container--default .select2-selection--single .form-group.has-danger .select2-search__field, .form-group.has-danger .typeahead,
+.form-group.has-danger .tt-query,
+.form-group.has-danger .tt-hint {
+    border-color: #fc424a; }
+
+.form-group .file-upload-default {
+    visibility: hidden;
+    position: absolute; }
+
+.form-group .file-upload-info {
+    background: transparent; }
+
+.form-check {
+    min-height: 18px;
+    padding-left: 1.25rem; }
 
 @media only screen and (max-width: 1280px) {
     .sidebar {

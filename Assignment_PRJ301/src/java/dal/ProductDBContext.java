@@ -80,7 +80,7 @@ public class ProductDBContext extends DBContext {
                 + " inner join Category c on (p.category_id = c.category_id) WHERE p.Product_id = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1,id);
+            st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Category c = new Category(rs.getInt("category_id"), rs.getString("category_name"));
@@ -92,22 +92,44 @@ public class ProductDBContext extends DBContext {
         }
         return null;
     }
-    
-     public void UpdateProduct(Product p) {
-        String sql = "Update Product set Product_name =?, Product_price=?, Product_quantity=?,Product_image=?,category_id=? WHERE Product_id = ?";
+
+    public void AddProduct(Product p) {
+        String sql = "INSERT INTO [Product]\n"
+                + "           ([Product_id]\n"
+                + "           ,[Product_name]\n"
+                + "           ,[Product_price]\n"
+                + "           ,[Product_quantity]\n"
+                + "           ,[Product_image]\n"
+                + "           ,[category_id])\n"
+                + "     VALUES(?,?,?,?,?,?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1,p.getName());
-            st.setFloat(2, p.getPrice());
-            st.setInt(3, p.getQuantity());
-            st.setString(4,p.getImage());
-            st.setInt(5, p.getCategory().getId());
-            st.setInt(6,p.getId());
+            st.setInt(1, p.getId());
+            st.setString(2, p.getName());
+            st.setFloat(3, p.getPrice());
+            st.setInt(4, p.getQuantity());
+            st.setString(5, p.getImage());
+            st.setInt(6, p.getCategory().getId());
             st.executeUpdate();
         } catch (SQLException e) {
         }
     }
-     
+
+    public void UpdateProduct(Product p) {
+        String sql = "Update Product set Product_name =?, Product_price=?, Product_quantity=?,Product_image=?,category_id=? WHERE Product_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, p.getName());
+            st.setFloat(2, p.getPrice());
+            st.setInt(3, p.getQuantity());
+            st.setString(4, p.getImage());
+            st.setInt(5, p.getCategory().getId());
+            st.setInt(6, p.getId());
+            st.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+
     public List<Product> SearchProductByName(String key) {
         String sql = "Select p.product_id, p.product_name, p.product_price, p.product_quantity, p.product_image, p.category_id, c.category_name from [Product] p \n"
                 + " inner join Category c on (p.category_id = c.category_id) where p.Product_name Like ?";
@@ -127,8 +149,7 @@ public class ProductDBContext extends DBContext {
         }
         return list;
     }
-    
-    
+
     public List<Product> SortProductByPriceAsc() {
         String sql = "Select p.product_id, p.product_name, p.product_price, p.product_quantity, p.product_image, p.category_id, c.category_name from [Product] p \n"
                 + " inner join Category c on (p.category_id = c.category_id) order by p.product_price asc";
@@ -147,7 +168,7 @@ public class ProductDBContext extends DBContext {
         }
         return list;
     }
-    
+
     public List<Product> SortProductByPriceDesc() {
         String sql = "Select p.product_id, p.product_name, p.product_price, p.product_quantity, p.product_image, p.category_id, c.category_name from [Product] p \n"
                 + " inner join Category c on (p.category_id = c.category_id) order by p.product_price desc";
@@ -166,7 +187,7 @@ public class ProductDBContext extends DBContext {
         }
         return list;
     }
-    
+
     public List<Product> SortProductByNameAsc() {
         String sql = "Select p.product_id, p.product_name, p.product_price, p.product_quantity, p.product_image, p.category_id, c.category_name from [Product] p \n"
                 + " inner join Category c on (p.category_id = c.category_id) order by p.product_name asc";
@@ -185,7 +206,7 @@ public class ProductDBContext extends DBContext {
         }
         return list;
     }
-    
+
     public List<Product> SortProductByNameDesc() {
         String sql = "Select p.product_id, p.product_name, p.product_price, p.product_quantity, p.product_image, p.category_id, c.category_name from [Product] p \n"
                 + " inner join Category c on (p.category_id = c.category_id) order by p.product_name desc";
@@ -204,7 +225,7 @@ public class ProductDBContext extends DBContext {
         }
         return list;
     }
-     
+
     public static void main(String[] args) {
         ProductDBContext prodcutdb = new ProductDBContext();
         List<Product> product = prodcutdb.GetListTabProduct(1);
