@@ -41,7 +41,7 @@ public class AddCategory extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddCategory</title>");            
+            out.println("<title>Servlet AddCategory</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet AddCategory at " + request.getContextPath() + "</h1>");
@@ -88,13 +88,16 @@ public class AddCategory extends HttpServlet {
             throws ServletException, IOException {
         String id_raw = request.getParameter("id");
         String catename = request.getParameter("catename");
-        int id = Integer.parseInt(id_raw);
-        Category c = new Category();
-        c.setId(id);
-        c.setName(catename);
-        CategoryDBContext categorydb = new CategoryDBContext();
-        categorydb.AddCategory(c);
-        response.sendRedirect("list-category");
+        try {
+            int id = Integer.parseInt(id_raw);
+            Category c = new Category();
+            c.setId(id);
+            c.setName(catename);
+            CategoryDBContext categorydb = new CategoryDBContext();
+            categorydb.AddCategory(c);
+            response.sendRedirect("list-category");
+        } catch (Exception e) {
+        }
     }
 
     /**

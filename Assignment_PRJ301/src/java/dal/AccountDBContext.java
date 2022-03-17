@@ -82,6 +82,23 @@ public class AccountDBContext extends DBContext {
         return null;
     }
 
+    public void AddAccount(Account a) {
+        String sql = "INSERT INTO [Account] ([account_id],[account_name],[account_password],[account_email],[account_phone],[account_address],[account_role]) \n"
+                + "VALUES (?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, a.getId());
+            st.setString(2, a.getUsername());
+            st.setString(3, a.getPassword());
+            st.setString(4, a.getEmail());
+            st.setString(5, a.getPhone());
+            st.setString(6, a.getAddress());
+            st.setBoolean(7, a.isRole());
+            st.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+
     public void UpdateAccount(Account a) {
         String sql = "Update Account set account_name =?, account_password=?, account_email=?, account_phone=?,account_address=?, "
                 + "account_role=? WHERE account_id = ?";
@@ -117,7 +134,7 @@ public class AccountDBContext extends DBContext {
             st.setString(2, password);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Account a = new Account(username,password,rs.getBoolean("account_role"));   
+                Account a = new Account(username, password, rs.getBoolean("account_role"));
                 return a;
             }
         } catch (Exception e) {

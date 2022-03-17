@@ -48,31 +48,31 @@
                             <form class="forms-sample" action="add-account" method="post">
                                 <div class="form-group">
                                     <label for="InputId">ID</label>
-                                    <input type="text" class="form-control" id="InputId" placeholder="ID">
+                                    <input type="text" name="id" class="form-control" id="InputId" placeholder="ID">
                                 </div>
                                 <div class="form-group">
                                     <label for="InputUsername">Username</label>
-                                    <input type="text" class="form-control" id="InputUsername" placeholder="Username">
+                                    <input type="text" name="username" class="form-control" id="InputUsername" placeholder="Username">
                                 </div>
                                 <div class="form-group">
                                     <label for="InputPass">Password</label>
-                                    <input type="password" class="form-control" id="InputPass" placeholder="Password">
+                                    <input type="password" name="password" class="form-control" id="InputPass" placeholder="Password">
                                 </div>
                                 <div class="form-group">
                                     <label for="InputEmail">Email</label>
-                                    <input type="text" class="form-control" id="InputEmail" placeholder="Email">
+                                    <input type="text" name="email" class="form-control" id="InputEmail" placeholder="Email">
                                 </div>
                                 <div class="form-group">
                                     <label for="InputPhone">Phone</label>
-                                    <input type="text" class="form-control" id="InputPhone" placeholder="Phone">
+                                    <input type="text" name="phone" class="form-control" id="InputPhone" placeholder="Phone">
                                 </div>
                                 <div class="form-group">
                                     <label for="InputAddress">Address</label>
-                                    <input type="text" class="form-control" id="InputAddress" placeholder="Address">
+                                    <input type="text" name="address" class="form-control" id="InputAddress" placeholder="Address">
                                 </div>
                                 <div class="form-group">
                                     <label for="InputRole">Role</label>
-                                    <input type="text" class="form-control" id="InputRole" placeholder="Role">
+                                    <input type="text" name="role" class="form-control" id="InputRole" placeholder="Role">
                                 </div>
                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
                                 <button class="btn btn-dark">Cancel</button>

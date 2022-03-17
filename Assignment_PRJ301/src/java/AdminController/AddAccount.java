@@ -5,8 +5,11 @@
  */
 package AdminController;
 
+import dal.AccountDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -64,13 +67,9 @@ public class AddAccount extends HttpServlet {
             PrintWriter out = response.getWriter();
             out.println("Access denied");
         } else {
-//            ProductDBContext productdb = new ProductDBContext();
-//            List<Product> list = new ArrayList<>();
-//            String id_raw = request.getParameter("id");
-//            int id = Integer.parseInt(id_raw);
-//            Product p = productdb.GetProductById(id);
-//            list.add(p);
-//            request.setAttribute("list", list);
+            AccountDBContext accountdb = new AccountDBContext();
+            List<Account> list = new ArrayList<>();
+            request.setAttribute("list", list);
             request.getRequestDispatcher("Admin/AddAccount.jsp").forward(request, response);
         }
     }
@@ -86,9 +85,23 @@ public class AddAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String id_raw = request.getParameter("id");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
+        String role_raw = request.getParameter("role");
+        try {
+            int id = Integer.parseInt(id_raw);
+            boolean role = Boolean.parseBoolean(role_raw);
+            Account a = new Account(id, username, password, email, phone, address, role);
+            AccountDBContext accountdb = new AccountDBContext();
+            accountdb.AddAccount(a);
+            response.sendRedirect("list-account");
+        } catch (Exception e) {
+        }
     }
-
     /**
      * Returns a short description of the servlet.
      *
