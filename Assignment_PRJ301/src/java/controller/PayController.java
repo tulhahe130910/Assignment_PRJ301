@@ -94,7 +94,6 @@ public class PayController extends HttpServlet {
             orderdb.SaveOrderDetail(orderid, carts);
             session.removeAttribute("carts");
             response.sendRedirect("home");
-            
         }
         
         
