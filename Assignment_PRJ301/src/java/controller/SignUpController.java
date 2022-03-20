@@ -5,21 +5,23 @@
  */
 package controller;
 
+import dal.AccountDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Cart;
+import model.Account;
 
 /**
  *
  * @author david
  */
-public class CartController extends HttpServlet {
+public class SignUpController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +40,10 @@ public class CartController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CartController</title>");            
+            out.println("<title>Servlet SignUpController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CartController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SignUpController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,19 +61,7 @@ public class CartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Map<Integer,Cart> carts = (Map<Integer,Cart>) session.getAttribute("carts");
-        if(carts != null){
-            float total = 0;
-            for (Map.Entry<Integer, Cart> entry : carts.entrySet()) {
-                Integer key = entry.getKey();
-                Cart valuecart = entry.getValue();
-                total += valuecart.getProduct().getPrice() * valuecart.getQuantity();
-            }
-            session.setAttribute("carts", carts);
-            session.setAttribute("total", total);
-        }
-        request.getRequestDispatcher("view/Cart.jsp").forward(request, response);
+            request.getRequestDispatcher("view/SignUp.jsp").forward(request, response);
     }
 
     /**
@@ -85,7 +75,18 @@ public class CartController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
+        try {
+            Account a = new Account(username, password, email, phone, address,false);
+            AccountDBContext accountdb = new AccountDBContext();
+            accountdb.SignUp(a);
+            response.sendRedirect("Login");
+        } catch (Exception e) {
+        }
     }
 
     /**

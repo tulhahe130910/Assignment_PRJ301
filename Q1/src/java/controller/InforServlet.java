@@ -7,19 +7,16 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Cart;
 
 /**
  *
  * @author david
  */
-public class CartController extends HttpServlet {
+public class InforServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +35,10 @@ public class CartController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CartController</title>");            
+            out.println("<title>Servlet InforServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CartController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet InforServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,19 +56,11 @@ public class CartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Map<Integer,Cart> carts = (Map<Integer,Cart>) session.getAttribute("carts");
-        if(carts != null){
-            float total = 0;
-            for (Map.Entry<Integer, Cart> entry : carts.entrySet()) {
-                Integer key = entry.getKey();
-                Cart valuecart = entry.getValue();
-                total += valuecart.getProduct().getPrice() * valuecart.getQuantity();
-            }
-            session.setAttribute("carts", carts);
-            session.setAttribute("total", total);
-        }
-        request.getRequestDispatcher("view/Cart.jsp").forward(request, response);
+        String id = getInitParameter("STUDENT_ID");
+        String code = getInitParameter("PAPER_CODE");
+        request.setAttribute("sid", id);
+        request.setAttribute("scode", code);
+        request.getRequestDispatcher("Infor.jsp").forward(request, response);
     }
 
     /**

@@ -37,18 +37,18 @@
                             <div class="collapse navbar-collapse" id="my-narbar">
                                 <ul class="navbar-nav menu">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="http://localhost:8080/Assignment_PRJ301/view/Home.jsp">Trang chủ</a>
+                                        <a class="nav-link" href="home">Trang chủ</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="http://localhost:8080/Assignment_PRJ301/view/GioiThieu.jsp">Giới thiệu</a>
+                                        <a class="nav-link" href="about">Giới thiệu</a>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="">Sản Phẩm</a>
+                                        <a class="nav-link" href="product">Sản Phẩm</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="http://localhost:8080/Assignment_PRJ301/view/Contact.jsp">Liên Hệ</a>
+                                        <a class="nav-link" href="contact">Liên Hệ</a>
                                     </li>
                                     <li>
-                                        <a class="nav-link" href="http://localhost:8080/Assignment_PRJ301/view/Login.jsp">Login</a>
+                                        <a class="nav-link" href="Login">Login</a>
                                     </li>
                                 </ul>
                             </div>

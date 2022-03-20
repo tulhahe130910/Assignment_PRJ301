@@ -82,6 +82,28 @@ public class AccountDBContext extends DBContext {
         return null;
     }
 
+    public void SignUp(Account a) {
+        String sql = "INSERT INTO [Account]\n"
+                + "           ([account_email]\n"
+                + "           ,[account_password]\n"
+                + "           ,[account_name] \n"
+                + "           ,[account_phone] \n"
+                + "           ,[account_address] \n"
+                + "           ,[account_role])\n"
+                + "     VALUES (?,?,?,?,?,?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, a.getEmail());
+            st.setString(2, a.getPassword());
+            st.setString(3, a.getUsername());
+            st.setString(4, a.getPhone());
+            st.setString(5, a.getAddress());
+            st.setBoolean(6, a.isRole());
+            st.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+
     public void AddAccount(Account a) {
         String sql = "INSERT INTO [Account] ([account_id],[account_name],[account_password],[account_email],[account_phone],[account_address],[account_role]) \n"
                 + "VALUES (?,?,?,?,?,?,?)";

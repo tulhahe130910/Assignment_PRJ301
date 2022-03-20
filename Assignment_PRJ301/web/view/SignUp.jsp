@@ -12,18 +12,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../css/SignUp.css" rel="stylesheet" type="text/css"/>
+        <link href="css/SignUp.css" rel="stylesheet" type="text/css"/>
         <title>SignUp Page</title>
     </head>
     <body>
-        <form action="" method="">
+        <form action="signup" method="POST">
             <div id="login-box">
                 <div class="left">
                     <h1>Sign up</h1>
                     <input type="text" name="username" placeholder="Username" />
-                    <input type="password" name="password" placeholder="Password" />
-                    <input type="text" name="address" placeholder="Address" />              
+                    <input type="password" name="password" placeholder="Password" />            
                     <input type="text" name="email" placeholder="E-mail">
+                    <input type="text" name="phone" placeholder="Phone">
+                    <input type="text" name="address" placeholder="Address">
                     <input type="submit" name="signup_submit" value="Sign Up" />
                 </div>
                 <div class="right">

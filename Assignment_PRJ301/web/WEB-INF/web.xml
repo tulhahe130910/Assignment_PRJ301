@@ -88,6 +88,10 @@
         <servlet-name>BuyController</servlet-name>
         <servlet-class>controller.BuyController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SignUpController</servlet-name>
+        <servlet-class>controller.SignUpController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AboutController</servlet-name>
         <url-pattern>/about</url-pattern>
@@ -175,6 +179,10 @@
     <servlet-mapping>
         <servlet-name>BuyController</servlet-name>
         <url-pattern>/buy</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignUpController</servlet-name>
+        <url-pattern>/signup</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

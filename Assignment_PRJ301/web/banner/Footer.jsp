@@ -24,7 +24,7 @@
                         <p class="koi-footer">9X-Store</p>
                         <div class="hr-footer"></div>
                         <p class="content-footer-p">Cung cấp các mặt hàng về thời trang<br> Được thiết kế bởi 9x team</p>
-                        <a href="#" class="fb">Facebook</a>
+                        <a href="https://www.facebook.com/tatclothes" class="fb">Facebook</a>
                         <a href="#" class="instagram">Instagram</a>
                     </div>
                     <div class="col-md-4 koi-phone">

@@ -67,9 +67,6 @@ public class AddAccount extends HttpServlet {
             PrintWriter out = response.getWriter();
             out.println("Access denied");
         } else {
-            AccountDBContext accountdb = new AccountDBContext();
-            List<Account> list = new ArrayList<>();
-            request.setAttribute("list", list);
             request.getRequestDispatcher("Admin/AddAccount.jsp").forward(request, response);
         }
     }

@@ -74,7 +74,6 @@ input[type="password"]:focus {
 }
 
 input[type="submit"] {
-    margin-top: 28px;
     width: 120px;
     height: 32px;
     background: #16a085;

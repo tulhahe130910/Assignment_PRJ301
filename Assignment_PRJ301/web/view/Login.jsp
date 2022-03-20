@@ -18,6 +18,7 @@
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- Google font -->
         <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
         <!-- Font Awesome-->
@@ -45,7 +46,10 @@
                                 <span class="group-btn">
                                     <button class="btn btn-danger btn-md" id="btn-login" type="submit">Login<i class="fa fa-sign-in"></i></button>
                                     &ensp;&ensp;&ensp;
-                                    <input type="checkbox" value="remember" name="remember"/> Remember Me! <br/>
+                                </span>
+                                <span class="group-btn">
+                                    <button class="btn btn-danger btn-md" id="btn-signup" type="submit"><a href="signup">Sign Up</a><i class="fa fa-sign-up"></i></button>
+                                    &ensp;&ensp;&ensp;
                                 </span>
                             </div>
                         </form>

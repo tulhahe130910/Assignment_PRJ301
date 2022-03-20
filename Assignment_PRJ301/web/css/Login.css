@@ -59,10 +59,17 @@ h4 {
 }
 .wrapper {
     text-align: center;
+    margin-left: 27px;
 }
 #btn-login{
     font-size: 25px;
 }
+#btn-signup{
+    font-size: 25px;
+}
 .group-btn{
     font-size: 25px;
+}
+a{
+    color:white !important; 
 }
