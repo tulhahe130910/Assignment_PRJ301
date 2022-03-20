@@ -39,21 +39,18 @@
             </div>
             <div class="container-fluid">
                 <div class="Sort">                                    
-                    <form id="f" action="product?sort=${requestScope.sort}?page=${requestScope.page}">
+                    <form id="f" action="list-order?sort=${requestScope.sort}">
                         <select name="sort" style="padding:5px" onchange="document.getElementById('f').submit()"> 
-                            <option>Sort by</option>
+                            <option>All List</option>
                             <option value="1" <c:if test="${sort==1}">
                                     selected
-                                </c:if> >Price (Low -> High)</option>
+                                </c:if> >Pending Order</option>
                             <option value="2" <c:if test="${sort==2}">
                                     selected
-                                </c:if> >Price (High -> Low)</option>
+                                </c:if> >Shipping Order</option>
                             <option value="3" <c:if test="${sort==3}">
                                     selected
-                                </c:if> >A -> Z</option>
-                            <option value="4" <c:if test="${sort==4}">
-                                    selected
-                                </c:if> >Z -> A</option>
+                                </c:if> >Reject Order</option>
                         </select>
                     </form>
                 </div>

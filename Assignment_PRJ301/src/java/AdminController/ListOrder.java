@@ -9,6 +9,7 @@ import dal.OrderDBContext;
 import dal.ProductDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
 import model.Order;
+import model.Product;
 
 /**
  *
@@ -41,7 +43,7 @@ public class ListOrder extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListOrder</title>");            
+            out.println("<title>Servlet ListOrder</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ListOrder at " + request.getContextPath() + "</h1>");
@@ -70,6 +72,19 @@ public class ListOrder extends HttpServlet {
         } else {
             OrderDBContext orderdb = new OrderDBContext();
             List<Order> listorder = orderdb.GetOrder();
+
+            String sort_raw = request.getParameter("sort");
+            if (sort_raw != null) {
+                int sort = Integer.parseInt(sort_raw);
+                if (sort == 1) {
+                    listorder = orderdb.getAllOrderByStatus("0");
+                } else if (sort == 2) {
+                    listorder = orderdb.getAllOrderByStatus("1");
+                } else if (sort == 3) {
+                    listorder = orderdb.getAllOrderByStatus("2");
+                }
+                request.setAttribute("listorder", listorder);
+            }
             request.setAttribute("listorder", listorder);
             request.getRequestDispatcher("Admin/ListOrder.jsp").forward(request, response);
         }

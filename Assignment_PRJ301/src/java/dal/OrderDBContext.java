@@ -120,9 +120,28 @@ public class OrderDBContext extends DBContext {
         }
     }
 
+    public List<Order> getAllOrderByStatus(String status) {
+        String sql = "Select * From [Order] WHERE status = ?";
+        List<Order> list = new ArrayList<>();
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, status);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Order o = new Order(rs.getInt("id"), rs.getString("fullname"), rs.getString("phone_number"), rs.getString("address"),
+                        rs.getString("note"), rs.getString("status"), rs.getFloat("total_money"), rs.getDate("Date"));
+                list.add(o);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
         OrderDBContext db = new OrderDBContext();
         System.out.println(db.GetOrder().get(0).getName());
     }
+
+
 
 }
