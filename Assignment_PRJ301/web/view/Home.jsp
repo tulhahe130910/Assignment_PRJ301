@@ -28,7 +28,7 @@
                                 <div class="carousel-item active slider-item-img">
                                     <img class="slide" src="image/bg-home.jpg" alt="First slide">
                                     <div class="slide-caption d-none d-md d-block">
-                                        <a class ="oder-slider" href="">đặt hàng</a>
+                                        <a class ="oder-slider" href="product">đặt hàng</a>
                                     </div>
                                 </div>
                             </div>

@@ -5,12 +5,17 @@
  */
 package controller;
 
+import dal.OrderDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Cart;
+import model.Order;
 
 /**
  *
@@ -70,7 +75,29 @@ public class PayController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String name = request.getParameter("name");
+        String address = request.getParameter("address");
+        String phone = request.getParameter("phone");
+        String note = request.getParameter("note");
+        HttpSession session = request.getSession();
+        Map<Integer,Cart> carts = (Map<Integer,Cart>) session.getAttribute("carts");
+        if(carts != null){
+            float total = 0;
+            for (Map.Entry<Integer, Cart> entry : carts.entrySet()) {
+                Integer key = entry.getKey();
+                Cart valuecart = entry.getValue();
+                total += valuecart.getProduct().getPrice() * valuecart.getQuantity();
+            }
+            OrderDBContext orderdb = new OrderDBContext();
+            Order o = new Order(name, phone, address, note, "0", total);
+            int orderid = orderdb.CreateOrderAndReturnId(o);
+            orderdb.SaveOrderDetail(orderid, carts);
+            session.removeAttribute("carts");
+            response.sendRedirect("home");
+            
+        }
+        
+        
     }
 
     /**

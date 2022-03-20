@@ -108,7 +108,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <a href="#" class="checkout-oder">TIẾN HÀNH THANH TOÁN</a>
+                            <a href="pay" class="checkout-oder">TIẾN HÀNH THANH TOÁN</a>
                         </div>
                     </div>
                 </div>

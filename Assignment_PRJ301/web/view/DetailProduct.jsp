@@ -39,17 +39,6 @@
                                 <h2 class="text-black">${p.name}</h2><br>
                                 <p><strong class="text-primary h4">${p.price}VND</strong></p><br>
                                 </c:forEach>
-                                <div class="mb-1 d-flex"> 
-                                    <label for="option-sm" class="d-flex mr-3 mb-3">
-                                        <span class="d-inline-block mr-2" style="top:2px; position: relative;"><input type="radio" id="option-sm" name="shop-sizes"></span> <span class="d-inline-block text-black">M</span>
-                                    </label>
-                                    <label for="option-md" class="d-flex mr-3 mb-3">
-                                        <span class="d-inline-block mr-2" style="top:2px; position: relative;"><input type="radio" id="option-md" name="shop-sizes"></span> <span class="d-inline-block text-black">L</span>
-                                    </label>
-                                    <label for="option-lg" class="d-flex mr-3 mb-3">
-                                        <span class="d-inline-block mr-2" style="top:2px; position: relative;"><input type="radio" id="option-lg" name="shop-sizes"></span> <span class="d-inline-block text-black">XL</span>
-                                    </label>
-                                </div><br>
                                 <div class="mb-5">
                                     <div class="input-group mb-3" style="max-width: 120px;">
                                         <div class="input-group-prepend">
