@@ -7,6 +7,9 @@ package dal;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import model.Cart;
 import model.Order;
@@ -56,7 +59,7 @@ public class OrderDBContext extends DBContext {
                     + "           ,[num]\n"
                     + "           ,[total_money])\n"
                     + "     VALUES (?,?,?,?,?)";
-  
+
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, orderid);
             for (Map.Entry<Integer, Cart> entry : carts.entrySet()) {
@@ -71,4 +74,55 @@ public class OrderDBContext extends DBContext {
         } catch (Exception e) {
         }
     }
+
+    public List<Order> GetOrder() {
+        String sql = "Select * From [Order]";
+        List<Order> list = new ArrayList<>();
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Order o = new Order(rs.getInt("id"), rs.getString("fullname"), rs.getString("phone_number"), rs.getString("address"),
+                        rs.getString("note"), rs.getString("status"), rs.getFloat("total_money"), rs.getDate("Date"));
+                list.add(o);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
+
+    public Order GetOrderById(int id) {
+        String sql = "select * from [Order] where ID = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Order o = new Order(rs.getInt("id"), rs.getString("fullname"), rs.getString("phone_number"), rs.getString("address"),
+                        rs.getString("note"), rs.getString("status"), rs.getFloat("total_money"), rs.getDate("Date"));
+                return o;
+            }
+        } catch (SQLException e) {
+        }
+        return null;
+    }
+
+    public void UpdateSetStatus(String status, int id) {
+        String sql = "UPDATE [Order]\n"
+                + "   SET [status] = ?\n"
+                + " WHERE id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, status);
+            st.setInt(2, id);
+            st.executeUpdate();
+        } catch (Exception ex) {
+        }
+    }
+
+    public static void main(String[] args) {
+        OrderDBContext db = new OrderDBContext();
+        System.out.println(db.GetOrder().get(0).getName());
+    }
+
 }

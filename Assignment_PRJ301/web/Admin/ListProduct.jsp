@@ -62,7 +62,6 @@
                                             <th>Price</th>
                                             <th>Category</th>
                                             <th>Quantity</th>
-<!--                                            <th>Add</th>-->
                                             <th>Update</th>
                                             <th>Delete</th>
                                         </tr>

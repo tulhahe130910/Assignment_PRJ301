@@ -444,6 +444,9 @@ table td {
 .payment-paid .dot {
     background-color: #04d182;
 }
+.payment-reject .dot {
+    background-color: red;
+}
 
 .payment-pending .dot {
     background-color: #ffc542;

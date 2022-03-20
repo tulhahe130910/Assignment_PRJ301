@@ -92,6 +92,18 @@
         <servlet-name>SignUpController</servlet-name>
         <servlet-class>controller.SignUpController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListOrder</servlet-name>
+        <servlet-class>AdminController.ListOrder</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AcceptOrder</servlet-name>
+        <servlet-class>AdminController.AcceptOrder</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RejectOrder</servlet-name>
+        <servlet-class>AdminController.RejectOrder</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AboutController</servlet-name>
         <url-pattern>/about</url-pattern>
@@ -183,6 +195,18 @@
     <servlet-mapping>
         <servlet-name>SignUpController</servlet-name>
         <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListOrder</servlet-name>
+        <url-pattern>/list-order</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AcceptOrder</servlet-name>
+        <url-pattern>/accept-order</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RejectOrder</servlet-name>
+        <url-pattern>/reject-order</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
