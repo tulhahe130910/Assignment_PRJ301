@@ -28,8 +28,8 @@
                             <div class="ovrly-bg"></div>
                             <div class="caption-bg">
                                 <h2 class="menu-text" style="color: white">Menu</h2>
-                                <a href="#">Trang chủ /</a>  
-                                <a href="#"><span style="color:white">Giỏ Hàng</span></a>
+                                <a href="home">Trang chủ /</a>  
+                                <a href="cart"><span style="color:white">Giỏ Hàng</span></a>
                             </div>
                         </div>
                     </div>
@@ -71,48 +71,54 @@
                                                 <td>${c.value.quantity*c.value.product.price}</td>
                                             </tr>
                                         </c:forEach>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th colspan="4" class="text-center">${total}</th>
-                                                <th class="total-price text-center">
-                                                    <span class="total">
-                                                        <strong></strong>
-                                                    </span>
-                                                </th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                            </form>
-                        </div>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="4" class="text-center">${total}</th>
+                                            <th class="total-price text-center">
+                                                <span class="total">
+                                                    <strong></strong>
+                                                </span>
+                                            </th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </form>
                     </div>
-                    <div class="row row-total">
-                        <div class="col-sm-8"></div>
-                        <div class="col-sm-4 col-sm-offset-8">
-                            <h3>Thanh Toán</h3>
-                            <table class="table table-bordered">
-                                <tbody>
-                                    <tr>
-                                        <td class="text-right">${total}</td>
-                                        <td class="text-right"><strong></strong></td>
-                                    </tr>
+                </div>
+                <div class="row row-total">
+                    <div class="col-sm-8"></div>
+                    <div class="col-sm-4 col-sm-offset-8">
+                        <h3>Thanh Toán</h3>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="text-right">${total}</td>
+                                    <td class="text-right"><strong></strong></td>
+                                </tr>
 
-                                    <tr>
-                                        <td class="text-right">Phí vận chuyển được tính khi xử lý đơn hàng:</td>
-                                        <td class="text-right"><strong>30000</strong></td> 
-                                    </tr>
-                                    <tr>
-                                        <td class="text-right">${total+30000}</td>
-                                        <td class="text-right"><strong></strong></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                <tr>
+                                    <td class="text-right">Phí vận chuyển được tính khi xử lý đơn hàng:</td>
+                                    <td class="text-right"><strong>30000</strong></td> 
+                                </tr>
+                                <tr>
+                                    <td class="text-right">${total+30000}</td>
+                                    <td class="text-right"><strong></strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <c:if test="${sessionScope.user==null}">
                             <a href="pay" class="checkout-oder">TIẾN HÀNH THANH TOÁN</a>
-                        </div>
+                        </c:if>
+                        <c:if test="${sessionScope.user!=null}">
+                            <a href="pay?id=${sessionScope.user.id}" class="checkout-oder">TIẾN HÀNH THANH TOÁN</a>
+                        </c:if>
+
                     </div>
                 </div>
             </div>
+        </div>
         <jsp:include flush="true" page="../banner/Footer.jsp"></jsp:include>
     </body>
 </html>

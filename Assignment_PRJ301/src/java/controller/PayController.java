@@ -5,15 +5,19 @@
  */
 package controller;
 
+import dal.AccountDBContext;
 import dal.OrderDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Account;
 import model.Cart;
 import model.Order;
 
@@ -61,6 +65,15 @@ public class PayController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String id_raw = request.getParameter("id");
+        if(id_raw != null){
+            int id = Integer.parseInt(id_raw);
+            AccountDBContext accountdb = new AccountDBContext();
+            Account a = accountdb.GetAccountById(id);
+            List<Account> list = new ArrayList<>();
+            list.add(a);
+            request.setAttribute("list", list);
+        }
         request.getRequestDispatcher("view/Pay.jsp").forward(request, response);
     }
 
