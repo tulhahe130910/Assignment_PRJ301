@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Authentication;
+package controller;
 
-import dal.AccountDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,7 +18,7 @@ import model.Account;
  *
  * @author david
  */
-public class LoginControler extends HttpServlet {
+public class LogoutController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +37,10 @@ public class LoginControler extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginControler</title>");            
+            out.println("<title>Servlet LogoutController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginControler at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet LogoutController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +58,17 @@ public class LoginControler extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("view/Login.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        Account a = (Account) session.getAttribute("user");
+        Account b = (Account) session.getAttribute("admin");
+        if (a != null || b != null) {
+            session.removeAttribute("user");
+            session.removeAttribute("admin");
+            response.sendRedirect("home");
+        } else {
+            response.sendRedirect("home");
+        }
+
     }
 
     /**
@@ -73,24 +82,7 @@ public class LoginControler extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        AccountDBContext db = new AccountDBContext();
-        Account a = db.check(username, password);
-        if (a == null) {
-            String err = "User name: " + username + " doesn't not exsit!!!";
-            request.setAttribute("err", err);
-            request.getRequestDispatcher("view/Login.jsp").forward(request, response);
-        } else {
-            HttpSession session = request.getSession(true);
-            if (a.isRole() == true) {
-                session.setAttribute("admin", a);
-                response.sendRedirect("admin");
-            } else {
-                session.setAttribute("user", a);
-                response.sendRedirect("home");
-            }
-        }
+        processRequest(request, response);
     }
 
     /**

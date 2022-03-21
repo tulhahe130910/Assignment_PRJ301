@@ -45,6 +45,14 @@ public class Account {
         this.address = address;
         this.role = role;
     }
+    public Account(int id, String username, String password, String email,String phone,String address) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+    }
 
     public int getId() {
         return id;

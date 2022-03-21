@@ -3,17 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/model/Cart.java</file>
-            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/dal/OrderDBContext.java</file>
-            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/web/view/DetailProduct.jsp</file>
-            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/controller/PayController.java</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/web/view/Product.jsp</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/web/banner/HeaderBanner.jsp</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/Authentication/LoginControler.java</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/AdminController/RejectOrder.java</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/AdminController/ListProduct.java</file>
             <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/model/Order.java</file>
-            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/dal/AccountDBContext.java</file>
-            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/controller/CartController.java</file>
-            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/web/view/Cart.jsp</file>
-            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/model/OrderDetail.java</file>
-            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/web/view/Pay.jsp</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/model/Account.java</file>
             <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/web/view/Home.jsp</file>
+            <file>file:/C:/PRJ301/Assignment_PRJ301/Assignment_PRJ301/src/java/AdminController/AcceptOrder.java</file>
         </group>
     </open-files>
 </project-private>

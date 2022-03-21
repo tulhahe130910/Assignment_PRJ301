@@ -3,23 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Authentication;
+package controller;
 
 import dal.AccountDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import model.Account;
 
 /**
  *
  * @author david
  */
-public class LoginControler extends HttpServlet {
+public class ProfileController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +39,10 @@ public class LoginControler extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginControler</title>");            
+            out.println("<title>Servlet ProfileController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginControler at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ProfileController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +60,14 @@ public class LoginControler extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("view/Login.jsp").forward(request, response);
+        AccountDBContext accountdb = new AccountDBContext();
+        List<Account> list = new ArrayList<>();
+        String id_raw = request.getParameter("id");
+        int id = Integer.parseInt(id_raw);
+        Account acc = accountdb.GetAccountById(id);
+        list.add(acc);
+        request.setAttribute("list", list);
+        request.getRequestDispatcher("view/Profile.jsp").forward(request, response);
     }
 
     /**
@@ -73,23 +81,18 @@ public class LoginControler extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        AccountDBContext db = new AccountDBContext();
-        Account a = db.check(username, password);
-        if (a == null) {
-            String err = "User name: " + username + " doesn't not exsit!!!";
-            request.setAttribute("err", err);
-            request.getRequestDispatcher("view/Login.jsp").forward(request, response);
-        } else {
-            HttpSession session = request.getSession(true);
-            if (a.isRole() == true) {
-                session.setAttribute("admin", a);
-                response.sendRedirect("admin");
-            } else {
-                session.setAttribute("user", a);
-                response.sendRedirect("home");
-            }
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
+        try {
+            Account a = new Account(id, username, password, email, phone, address);
+            AccountDBContext accountdb = new AccountDBContext();
+            accountdb.UpdateProfile(a);
+            response.sendRedirect("profile?id="+id);
+        } catch (Exception e) {
         }
     }
 

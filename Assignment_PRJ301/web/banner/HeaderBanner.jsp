@@ -14,8 +14,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/31a284aacb.js"></script>
-        <link href="../css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <title>Header Page</title>
     </head>
     <body>
@@ -47,9 +47,20 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="contact">Liên Hệ</a>
                                     </li>
-                                    <li>
-                                        <a class="nav-link" href="Login">Login</a>
-                                    </li>
+                                    <c:if test="${sessionScope.user==null}">
+                                        <li>
+                                            <a class="nav-link" href="Login">Login</a>
+                                        </li>
+                                    </c:if>
+                                    <c:if test="${sessionScope.user!=null}">
+                                        <li>
+                                            <a class="nav-link" href="profile?id=${sessionScope.user.id}">Profile</a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="logout">Logout</a>
+                                        </li>
+                                    </c:if>
+
                                 </ul>
                             </div>
                         </nav>
