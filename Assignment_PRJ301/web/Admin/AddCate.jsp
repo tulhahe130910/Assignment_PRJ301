@@ -47,10 +47,6 @@
                             <p class="card-description"> Add Category </p>
                             <form class="forms-sample" action="add-category" method="post">
                                 <div class="form-group">
-                                    <label for="InputId">ID</label>
-                                    <input type="text" name="id" class="form-control" id="InputId" placeholder="ID">
-                                </div>
-                                <div class="form-group">
                                     <label for="InputCateName">Category Name</label>
                                     <input type="text" name="catename" class="form-control" id="InputCateName" placeholder="Category Name">
                                 </div>

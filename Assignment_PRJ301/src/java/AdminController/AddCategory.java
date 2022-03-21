@@ -86,12 +86,9 @@ public class AddCategory extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id_raw = request.getParameter("id");
         String catename = request.getParameter("catename");
         try {
-            int id = Integer.parseInt(id_raw);
             Category c = new Category();
-            c.setId(id);
             c.setName(catename);
             CategoryDBContext categorydb = new CategoryDBContext();
             categorydb.AddCategory(c);

@@ -5,7 +5,10 @@
  */
 package AdminController;
 
+import dal.AccountDBContext;
 import dal.CategoryDBContext;
+import dal.OrderDBContext;
+import dal.ProductDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -17,6 +20,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
 import model.Category;
+import model.Order;
+import model.Product;
+import model.Profit;
 
 /**
  *
@@ -41,7 +47,7 @@ public class AdminController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AdminController</title>");            
+            out.println("<title>Servlet AdminController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet AdminController at " + request.getContextPath() + "</h1>");
@@ -62,12 +68,12 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
-        Account a = (Account) session.getAttribute("admin");
-        if (a == null){
-            PrintWriter out = response.getWriter();
-            out.println("Access denied");
-        }else{
+//        HttpSession session = request.getSession(true);
+//        Account a = (Account) session.getAttribute("admin");
+//        if (a == null){
+//            PrintWriter out = response.getWriter();
+//            out.println("Access denied");
+//        }else{
         List<Category> listCate = new CategoryDBContext().GetAllCategory();
         request.setAttribute("listCate", listCate);
         List<Integer> listCountCate = new ArrayList<>();
@@ -75,10 +81,39 @@ public class AdminController extends HttpServlet {
             int n = new CategoryDBContext().CountCategory(i);
             listCountCate.add(n);
         }
+        //total order
+        int total_order = new OrderDBContext().getTotalOrder();
+        request.setAttribute("total_order", total_order);
+
+        //total user
+        int total_user = new AccountDBContext().getTotalUser();
+        request.setAttribute("total_user", total_user);
+
+        //total profit
+        int total_profit = new OrderDBContext().getTotalProfit();
+        request.setAttribute("total_profit", total_profit);
+
+        //total product
+        int total_product = new ProductDBContext().getTotalProduct();
+        request.setAttribute("total_product", total_product);
+
+        //top 4 price product
+        List<Product> list4product = new ProductDBContext().TopProductPrice();
+        request.setAttribute("top4product", list4product);
+
+        //profit week daily
+        List<Profit> listprofitweek = new OrderDBContext().Get7daysProfit();
+        request.setAttribute("listprofitweek", listprofitweek);
+
+        //recent order
+        OrderDBContext orderdb = new OrderDBContext();
+        List<Order> listorder = orderdb.GetOrder();
+        request.setAttribute("listorder", listorder);
+
         request.setAttribute("listcount", listCountCate);
         request.getRequestDispatcher("Admin/HomeAdmin.jsp").forward(request, response);
-        }
     }
+    //}
 
     /**
      * Handles the HTTP <code>POST</code> method.

@@ -95,21 +95,19 @@ public class ProductDBContext extends DBContext {
 
     public void AddProduct(Product p) {
         String sql = "INSERT INTO [Product]\n"
-                + "           ([Product_id]\n"
-                + "           ,[Product_name]\n"
+                + "           ([Product_name]\n"
                 + "           ,[Product_price]\n"
                 + "           ,[Product_quantity]\n"
                 + "           ,[Product_image]\n"
                 + "           ,[category_id])\n"
-                + "     VALUES(?,?,?,?,?,?)";
+                + "     VALUES (?,?,?,?,?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, p.getId());
-            st.setString(2, p.getName());
-            st.setFloat(3, p.getPrice());
-            st.setInt(4, p.getQuantity());
-            st.setString(5, p.getImage());
-            st.setInt(6, p.getCategory().getId());
+            st.setString(1, p.getName());
+            st.setFloat(2, p.getPrice());
+            st.setInt(3, p.getQuantity());
+            st.setString(4, p.getImage());
+            st.setInt(5, p.getCategory().getId());
             st.executeUpdate();
         } catch (SQLException e) {
         }
@@ -210,6 +208,40 @@ public class ProductDBContext extends DBContext {
     public List<Product> SortProductByNameDesc() {
         String sql = "Select p.product_id, p.product_name, p.product_price, p.product_quantity, p.product_image, p.category_id, c.category_name from [Product] p \n"
                 + " inner join Category c on (p.category_id = c.category_id) order by p.product_name desc";
+        List<Product> list = new ArrayList<>();
+        try {
+
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category c = new Category(rs.getInt("category_id"), rs.getString("category_name"));
+                Product p = new Product(rs.getInt("product_id"), rs.getString("product_name"), rs.getFloat("product_price"),
+                        rs.getInt("product_quantity"), rs.getString("product_image"), c);
+                list.add(p);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
+
+    public int getTotalProduct() {
+        String sql = "Select count(*) as 'total' From Product";
+        int n = 0;
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                n = rs.getInt("total");
+                return n;
+            }
+        } catch (SQLException e) {
+        }
+        return n;
+    }
+
+    public List<Product> TopProductPrice() {
+        String sql = "Select Top 4 p.product_id, p.product_name, p.product_price, p.product_quantity, p.product_image, p.category_id, c.category_name from [Product] p \n"
+                + " inner join Category c on (p.category_id = c.category_id) order by p.product_price desc";
         List<Product> list = new ArrayList<>();
         try {
 

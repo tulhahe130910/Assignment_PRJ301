@@ -47,10 +47,6 @@
                             <p class="card-description"> Add Account </p>
                             <form class="forms-sample" action="add-account" method="post">
                                 <div class="form-group">
-                                    <label for="InputId">ID</label>
-                                    <input type="text" name="id" class="form-control" id="InputId" placeholder="ID">
-                                </div>
-                                <div class="form-group">
                                     <label for="InputUsername">Username</label>
                                     <input type="text" name="username" class="form-control" id="InputUsername" placeholder="Username">
                                 </div>

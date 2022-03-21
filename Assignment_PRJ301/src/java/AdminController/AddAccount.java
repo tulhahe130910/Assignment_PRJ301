@@ -82,7 +82,6 @@ public class AddAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id_raw = request.getParameter("id");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
@@ -90,15 +89,16 @@ public class AddAccount extends HttpServlet {
         String address = request.getParameter("address");
         String role_raw = request.getParameter("role");
         try {
-            int id = Integer.parseInt(id_raw);
             boolean role = "1".equals(role_raw);
-            Account a = new Account(id, username, password, email, phone, address, role);
+            Account a = new Account(username, password, email, phone, address, role);
             AccountDBContext accountdb = new AccountDBContext();
+            System.out.println(a.isRole()+ "=====");
             accountdb.AddAccount(a);
             response.sendRedirect("list-account");
         } catch (Exception e) {
         }
     }
+
     /**
      * Returns a short description of the servlet.
      *

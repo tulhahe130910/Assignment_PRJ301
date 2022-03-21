@@ -105,17 +105,23 @@ public class AccountDBContext extends DBContext {
     }
 
     public void AddAccount(Account a) {
-        String sql = "INSERT INTO [Account] ([account_id],[account_name],[account_password],[account_email],[account_phone],[account_address],[account_role]) \n"
-                + "VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO [Account]\n"
+                + "           ([account_email]\n"
+                + "           ,[account_password]\n"
+                + "           ,[account_name]\n"
+                + "           ,[account_phone]\n"
+                + "           ,[account_address]\n"
+                + "           ,[account_role])\n"
+                + "     VALUES\n"
+                + "           (?,?,?,?,?,?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, a.getId());
-            st.setString(2, a.getUsername());
+            st.setString(1, a.getEmail());
             st.setString(3, a.getPassword());
-            st.setString(4, a.getEmail());
-            st.setString(5, a.getPhone());
-            st.setString(6, a.getAddress());
-            st.setBoolean(7, a.isRole());
+            st.setString(2, a.getUsername());
+            st.setString(4, a.getPhone());
+            st.setString(5, a.getAddress());
+            st.setBoolean(6, a.isRole());
             st.executeUpdate();
         } catch (SQLException e) {
         }
@@ -147,7 +153,7 @@ public class AccountDBContext extends DBContext {
         } catch (SQLException e) {
         }
     }
-    
+
     public Account GetAccountProfile() {
         String sql = "Select account_name, account_password, account_email, account_phone, account_address From Account";
         try {
@@ -166,7 +172,7 @@ public class AccountDBContext extends DBContext {
         }
         return null;
     }
-    
+
     public void UpdateProfile(Account a) {
         String sql = "Update Account set account_name =?, account_password=?, account_email=?, account_phone=?,account_address=? "
                 + " WHERE account_id = ?";
@@ -191,13 +197,28 @@ public class AccountDBContext extends DBContext {
             st.setString(2, password);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Account a = new Account(rs.getInt("account_id"),rs.getString("account_email"), password, username, rs.getString("account_phone"),
-                        rs.getString("account_address"),rs.getBoolean("account_role"));
+                Account a = new Account(rs.getInt("account_id"), username, password, rs.getString("account_email"), rs.getString("account_phone"),
+                        rs.getString("account_address"), rs.getBoolean("account_role"));
                 return a;
             }
         } catch (Exception e) {
         }
         return null;
+    }
+
+    public int getTotalUser() {
+        String sql = "Select count(*) as 'total' From Account";
+        int n = 0;
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                n = rs.getInt("total");
+                return n;
+            }
+        } catch (SQLException e) {
+        }
+        return n;
     }
 
 }

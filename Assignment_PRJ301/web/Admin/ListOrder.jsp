@@ -75,7 +75,6 @@
                                             <th>Note</th>
                                             <th>Status</th>
                                             <th>Total money</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -128,9 +127,6 @@
                                                         </span>
                                                     </td>
                                                 </c:if>
-
-
-
                                             </tr>
                                         </c:forEach>
                                     </tbody>

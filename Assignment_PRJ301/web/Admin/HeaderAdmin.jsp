@@ -18,11 +18,11 @@
         <div class="sidebar-user-info">
             <img src="image/user-image-2.png" alt="User picture" class="profile-image">
             <div class="sidebar-user-name">
-                anh tu
+                ${sessionScope.admin.username}
             </div>
         </div>
         <button class="btn btn-outline">
-            <i class='bx bx-log-out bx-flip-horizontal'></i>
+            <a class='bx bx-log-out bx-flip-horizontal' href="logout"></a>
         </button>
     </div>
     <!-- SIDEBAR MENU -->

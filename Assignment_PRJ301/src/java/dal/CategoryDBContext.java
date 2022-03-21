@@ -69,11 +69,10 @@ public class CategoryDBContext extends DBContext{
     }
     
     public void AddCategory(Category c) {
-        String sql = "INSERT INTO [Category] ([category_id],[category_name]) VALUES (? ,?)";
+        String sql = "INSERT INTO [Category] ([category_name]) VALUES (?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, c.getId());
-            st.setString(2, c.getName());
+            st.setString(1, c.getName());
             st.executeUpdate();
         } catch (SQLException e) {
         }

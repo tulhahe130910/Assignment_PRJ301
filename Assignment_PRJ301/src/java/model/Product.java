@@ -28,6 +28,13 @@ public class Product {
         this.image = image;
         this.category = category;
     }
+    public Product(String name, float price, int quantity, String image, Category category) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.image = image;
+        this.category = category;
+    }
 
     public int getId() {
         return id;

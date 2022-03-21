@@ -47,10 +47,6 @@
                             <p class="card-description"> Add Product </p>
                             <form class="forms-sample" action="add-product" method="post">
                                 <div class="form-group">
-                                    <label for="InputId">ID</label>
-                                    <input type="text" name="id" class="form-control" id="InputId" placeholder="ID">
-                                </div>
-                                <div class="form-group">
                                     <label for="InputName">Name</label>
                                     <input type="text" name="name" class="form-control" id="InputName" placeholder="Name">
                                 </div>
@@ -64,8 +60,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Image product upload</label>
-                                    <input type="file" name="image" class="file-upload-default">
+<!--                                    <input type="text" name="image" class="file-upload-default">-->
                                     <div class="input-group col-xs-12">
+                                        <input type="text" name="image" class="form-control file-upload-info"  placeholder="Upload Image">
                                     </div>
                                 </div>
                                 <div class="form-group">

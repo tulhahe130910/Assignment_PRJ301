@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="counter-info">
                                     <div class="counter-count">
-                                        6578
+                                        ${total_order}
                                     </div>
                                     <i class='bx bx-shopping-bag'></i>
                                 </div>
@@ -63,13 +63,13 @@
                             <!-- COUNTER -->
                             <div class="counter">
                                 <div class="counter-title">
-                                    conversion rate
+                                    Total user
                                 </div>
                                 <div class="counter-info">
                                     <div class="counter-count">
-                                        30.5%
+                                        ${total_user}
                                     </div>
-                                    <i class='bx bx-chat'></i>
+                                    <i class='bx bx-user'></i>
                                 </div>
                             </div>
                             <!-- END COUNTER -->
@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="counter-info">
                                     <div class="counter-count">
-                                        $9,780
+                                        ${total_profit}
                                     </div>
                                     <i class='bx bx-line-chart'></i>
                                 </div>
@@ -97,13 +97,13 @@
                             <!-- COUNTER -->
                             <div class="counter">
                                 <div class="counter-title">
-                                    daily visitors
+                                    Total Product
                                 </div>
                                 <div class="counter-info">
                                     <div class="counter-count">
-                                        690
+                                        ${total_product}
                                     </div>
-                                    <i class='bx bx-user'></i>
+                                    <i class='bx bx-category'></i>
                                 </div>
                             </div>
                             <!-- END COUNTER -->
@@ -116,66 +116,27 @@
                         <!-- TOP PRODUCT -->
                         <div class="box f-height">
                             <div class="box-header">
-                                top product
+                                top product price
                             </div>
                             <div class="box-body">
-                                <ul class="product-list">
-                                    <li class="product-list-item">
-                                        <div class="item-info">
-                                            <img src="./images/thumb-7.jpg" alt="product image">
-                                            <div class="item-name">
-                                                <div class="product-name">Jacket</div>
-                                                <div class="text-second">Cloths</div>
+                                <c:forEach items="${requestScope.top4product}" var="top">
+                                    <ul class="product-list">
+                                        <li class="product-list-item">
+                                            <div class="item-info">
+                                                <img src="image/${top.image}" alt="product image">
+                                                <div class="item-name">
+                                                    <div class="product-name">${top.name}</div>
+                                                    <div class="text-second">${top.category.name}</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="item-sale-info">
-                                            <div class="text-second">Sales</div>
-                                            <div class="product-sales">$5,930</div>
-                                        </div>
-                                    </li>
-                                    <li class="product-list-item">
-                                        <div class="item-info">
-                                            <img src="./images/sneaker.jpg" alt="product image">
-                                            <div class="item-name">
-                                                <div class="product-name">sneaker</div>
-                                                <div class="text-second">Cloths</div>
+                                            <div class="item-sale-info">
+                                                <div class="product-sales">${top.price}</div>
                                             </div>
-                                        </div>
-                                        <div class="item-sale-info">
-                                            <div class="text-second">Sales</div>
-                                            <div class="product-sales">$5,930</div>
-                                        </div>
-                                    </li>
-                                    <li class="product-list-item">
-                                        <div class="item-info">
-                                            <img src="./images/headphone.jpg" alt="product image">
-                                            <div class="item-name">
-                                                <div class="product-name">headphone</div>
-                                                <div class="text-second">Devices</div>
-                                            </div>
-                                        </div>
-                                        <div class="item-sale-info">
-                                            <div class="text-second">Sales</div>
-                                            <div class="product-sales">$5,930</div>
-                                        </div>
-                                    </li>
-                                    <li class="product-list-item">
-                                        <div class="item-info">
-                                            <img src="./images/backpack.jpg" alt="product image">
-                                            <div class="item-name">
-                                                <div class="product-name">Backpack</div>
-                                                <div class="text-second">Bags</div>
-                                            </div>
-                                        </div>
-                                        <div class="item-sale-info">
-                                            <div class="text-second">Sales</div>
-                                            <div class="product-sales">$5,930</div>
-                                        </div>
-                                    </li>
-                                </ul>
+                                        </li>
+                                    </ul>
+                                </c:forEach>
                             </div>
                         </div>
-                        <!-- TOP PRODUCT -->
                     </div>
                     <div class="col-4 col-md-6 col-sm-12">
                         <!-- CATEGORY CHART -->
@@ -190,7 +151,7 @@
                         <!-- CUSTOMERS CHART -->
                         <div class="box f-height">
                             <div class="box-header">
-                                customers
+                                Profit Week Daily
                             </div>
                             <div class="box-body">
                                 <div id="customer-chart"></div>
@@ -209,124 +170,55 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Customer</th>
+                                            <th>Full Name</th>
                                             <th>Date</th>
-                                            <th>Order status</th>
-                                            <th>Payment status</th>
-                                            <th>Total</th>
+                                            <th>Phone</th>
+                                            <th>Address</th>
+                                            <th>Note</th>
+                                            <th>Status</th>
+                                            <th>Total money</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>#2345</td>
-                                            <td>
-                                                <div class="order-owner">
-                                                    <img src="./images/user-image.jpg" alt="user image">
-                                                    <span>tuat tran anh</span>
-                                                </div>
-                                            </td>
-                                            <td>2021-05-09</td>
-                                            <td>
-                                                <span class="order-status order-ready">
-                                                    Ready
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <div class="payment-status payment-pending">
-                                                    <div class="dot"></div>
-                                                    <span>Pending</span>
-                                                </div>
-                                            </td>
-                                            <td>$123.45</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#2345</td>
-                                            <td>
-                                                <div class="order-owner">
-                                                    <img src="./images/user-image-2.png" alt="user image">
-                                                    <span>John doe</span>
-                                                </div>
-                                            </td>
-                                            <td>2021-05-09</td>
-                                            <td>
-                                                <span class="order-status order-shipped">
-                                                    Shipped
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <div class="payment-status payment-paid">
-                                                    <div class="dot"></div>
-                                                    <span>Paid</span>
-                                                </div>
-                                            </td>
-                                            <td>$123.45</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#2345</td>
-                                            <td>
-                                                <div class="order-owner">
-                                                    <img src="./images/user-image-3.png" alt="user image">
-                                                    <span>evelyn</span>
-                                                </div>
-                                            </td>
-                                            <td>2021-05-09</td>
-                                            <td>
-                                                <span class="order-status order-shipped">
-                                                    Shipped
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <div class="payment-status payment-paid">
-                                                    <div class="dot"></div>
-                                                    <span>Paid</span>
-                                                </div>
-                                            </td>
-                                            <td>$123.45</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#2345</td>
-                                            <td>
-                                                <div class="order-owner">
-                                                    <img src="./images/user-image-2.png" alt="user image">
-                                                    <span>John doe</span>
-                                                </div>
-                                            </td>
-                                            <td>2021-05-09</td>
-                                            <td>
-                                                <span class="order-status order-shipped">
-                                                    Shipped
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <div class="payment-status payment-paid">
-                                                    <div class="dot"></div>
-                                                    <span>Paid</span>
-                                                </div>
-                                            </td>
-                                            <td>$123.45</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#2345</td>
-                                            <td>
-                                                <div class="order-owner">
-                                                    <img src="./images/user-image-3.png" alt="user image">
-                                                    <span>evelyn</span>
-                                                </div>
-                                            </td>
-                                            <td>2021-05-09</td>
-                                            <td>
-                                                <span class="order-status order-shipped">
-                                                    Shipped
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <div class="payment-status payment-paid">
-                                                    <div class="dot"></div>
-                                                    <span>Paid</span>
-                                                </div>
-                                            </td>
-                                            <td>$123.45</td>
-                                        </tr>
+                                        <c:forEach items="${requestScope.listorder}" var="lo">
+                                            <tr>
+                                                <td>${lo.id}</td>
+                                                <td>
+                                                    <div class="order-owner">
+                                                        <span>${lo.name}</span>
+                                                    </div>
+                                                </td>
+                                                <td>${lo.date}</td>
+                                                <td>${lo.phone}</td>
+                                                <td>${lo.address}</td>
+                                                <td>${lo.note}</td>
+                                                <c:if test="${lo.status==0}">
+                                                    <td>
+                                                        <div class="payment-status payment-pending">
+                                                            <div class="dot"></div>
+                                                            <span>Pending</span>
+                                                        </div
+                                                    </td>
+                                                </c:if>
+                                                <c:if test="${lo.status==1}">
+                                                    <td>
+                                                        <div class="payment-status payment-paid">
+                                                            <div class="dot"></div>
+                                                            <span>Shipping</span>
+                                                        </div
+                                                    </td>
+                                                </c:if>
+                                                <c:if test="${lo.status==2}">
+                                                    <td>
+                                                        <div class="payment-status payment-reject">
+                                                            <div class="dot"></div>
+                                                            <span>Reject</span>
+                                                        </div
+                                                    </td>
+                                                </c:if>
+                                                <td>${lo.totalmoney}</td>
+                                            </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -343,7 +235,7 @@
         <!-- SCRIPT -->
         <!-- APEX CHART -->
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-        
+
         <!-- APP JS -->
         <script>
             let category = []
@@ -352,7 +244,7 @@
             </c:forEach>
             let countCate = []
             <c:forEach items="${requestScope.listcount}" var="lc">
-                countCate.push(${lc})
+            countCate.push(${lc})
             </c:forEach>
             let category_options = {
                 series: countCate,
@@ -366,13 +258,22 @@
             let category_chart = new ApexCharts(document.querySelector("#category-chart"), category_options)
             category_chart.render()
 
+            let profit = []
+            let quantity = []
+            let date = []
+            <c:forEach items="${requestScope.listprofitweek}" var="lw">
+            profit.push("${lw.totalmoney}")
+            quantity.push("${lw.quanlity}")
+            date.push("${lw.date}")
+            </c:forEach>
+
             let customer_options = {
                 series: [{
-                        name: "Store Customers",
-                        data: [40, 70, 20, 90, 36, 80, 30, 91, 60]
+                        name: "Profit",
+                        data: profit
                     }, {
-                        name: "Online Customers",
-                        data: [20, 30, 10, 20, 16, 40, 20, 51, 10]
+                        name: "Product Solds",
+                        data: quantity
                     }],
                 colors: ['#6ab04c', '#2980b9'],
                 chart: {
@@ -386,7 +287,7 @@
                     curve: 'smooth'
                 },
                 xaxis: {
-                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                    categories: date,
                 },
                 legend: {
                     position: 'top'

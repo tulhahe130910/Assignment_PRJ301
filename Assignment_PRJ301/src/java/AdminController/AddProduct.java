@@ -88,20 +88,18 @@ public class AddProduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id_raw = request.getParameter("id");
         String name = request.getParameter("name");
         String price_raw = request.getParameter("price");
         String quantity_raw = request.getParameter("quantity");
         String image = request.getParameter("image");
         String category_raw = request.getParameter("category");
         try {
-            int id = Integer.parseInt(id_raw);
             float price = Float.parseFloat(price_raw);
             int quantity = Integer.parseInt(quantity_raw);
             int category = Integer.parseInt(category_raw);
 
             Category c = new Category(category);
-            Product p = new Product(id, name, price, quantity, image, c);
+            Product p = new Product(name, price, quantity, image, c);
             ProductDBContext productdb = new ProductDBContext();
             productdb.AddProduct(p);
             response.sendRedirect("list-product");

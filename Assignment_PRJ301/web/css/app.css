@@ -482,7 +482,7 @@ table td {
     border-color: #fc424a; }
 
 .form-group .file-upload-default {
-    visibility: hidden;
+    
     position: absolute; }
 
 .form-group .file-upload-info {

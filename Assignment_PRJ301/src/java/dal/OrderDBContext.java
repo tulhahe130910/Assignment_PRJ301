@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import model.Cart;
 import model.Order;
+import model.Profit;
 
 /**
  *
@@ -137,11 +138,58 @@ public class OrderDBContext extends DBContext {
         return list;
     }
 
+    public int getTotalOrder() {
+        String sql = "Select count(*) as 'total' From [Order]";
+        int n = 0;
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                n = rs.getInt("total");
+                return n;
+            }
+        } catch (SQLException e) {
+        }
+        return n;
+    }
+
+    public int getTotalProfit() {
+        String sql = "select SUM(total_money) as 'sumtt' from [Order]";
+        int n = 0;
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                n = rs.getInt("sumtt");
+                return n;
+            }
+        } catch (SQLException e) {
+        }
+        return n;
+    }
+
+    public List<Profit> Get7daysProfit() {
+        String sql = "select top 7 SUM(o.total_money) as'money', SUM(od.num) as'quanlity',o.[date] from Order_details od\n"
+                + "join [order] o \n"
+                + "on o.id = od.id\n"
+                + "group by o.date\n"
+                + "order by o.date";
+        List<Profit> list = new ArrayList<>();
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Profit pro = new Profit(rs.getInt("money"), rs.getInt("quanlity"), rs.getDate("date"));
+                list.add(pro);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
         OrderDBContext db = new OrderDBContext();
         System.out.println(db.GetOrder().get(0).getName());
     }
-
-
-
 }
