@@ -42,16 +42,10 @@
 
                                     <div class="mb-5">
                                         <div class="input-group mb-3" style="max-width: 120px;">
-                                            <%--      <c:if test="${quantity!=null}">
-                                                <input type="number" class="form-control text-center" value="1" name="number">
-</c:if> --%>
-
                                             <input type="number" class="form-control text-center" value="1" name="quantity">
-
                                         </div>
                                     </div>
                                     <input type="submit" value="Add To Cart"/>
-<!--                                    <p><a href="buy?id=${p.id}" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>-->
                                 </div>
                             </c:forEach>
                         </div>
