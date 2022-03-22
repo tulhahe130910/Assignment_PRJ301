@@ -257,6 +257,7 @@ public class ProductDBContext extends DBContext {
         }
         return list;
     }
+
     public List<Product> Top9ProductPrice() {
         String sql = "Select Top 9 p.product_id, p.product_name, p.product_price, p.product_quantity, p.product_image, p.category_id, c.category_name from [Product] p \n"
                 + " inner join Category c on (p.category_id = c.category_id) order by p.product_price desc";
@@ -274,6 +275,17 @@ public class ProductDBContext extends DBContext {
         } catch (SQLException e) {
         }
         return list;
+    }
+
+    public void UpdateSetQuantity(int id, int quantity) {
+        String sql = "UPDATE [Product] SET [Product_quantity] = ? WHERE Product_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(2, id);
+            st.setInt(1, quantity);
+            st.executeUpdate();
+        } catch (SQLException e) {
+        }
     }
 
     public static void main(String[] args) {

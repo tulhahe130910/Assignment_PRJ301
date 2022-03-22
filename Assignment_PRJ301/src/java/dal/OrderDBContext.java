@@ -187,9 +187,27 @@ public class OrderDBContext extends DBContext {
         }
         return list;
     }
-
+    
+    public List<Order> GetRecentOrder() {
+        String sql = "Select Top 5 * From [Order] order by Date desc ";
+        List<Order> list = new ArrayList<>();
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Order o = new Order(rs.getInt("id"), rs.getString("fullname"), rs.getString("phone_number"), rs.getString("address"),
+                        rs.getString("note"), rs.getString("status"), rs.getFloat("total_money"), rs.getDate("Date"));
+                list.add(o);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
+    
     public static void main(String[] args) {
         OrderDBContext db = new OrderDBContext();
         System.out.println(db.GetOrder().get(0).getName());
     }
+
+    
 }

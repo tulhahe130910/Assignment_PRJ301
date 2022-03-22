@@ -27,8 +27,6 @@
 
     <body>
         <jsp:include page="HeaderAdmin.jsp" flush="true"/>
-        <!-- END SIDEBAR -->
-
         <!-- MAIN CONTENT -->
         <div class="main">
             <div class="main-header">

@@ -39,7 +39,7 @@
                 <div class="container">
                     <div class="row row-total-top">
                         <div class="col-sm-12 col-xs-12">
-                            <form action="" method="post" id="form-cart8428">
+                            <form action="cart" method="post" id="form-cart8428">
                                 <div class="table-responsive table-cart-content">
                                     <table class="table table-bordered">
                                         <thead>
@@ -69,6 +69,10 @@
                                                 <td>${c.value.product.price}</td>
                                                 <td>${c.value.quantity}</td>
                                                 <td>${c.value.quantity*c.value.product.price}</td>
+                                                <td>
+                                                    <input type="hidden" name="id" value="${c.value.product.id}"/>
+                                                    <input class="btn btn-primary btn-sm" type="submit" value="X"/>
+                                                </td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>

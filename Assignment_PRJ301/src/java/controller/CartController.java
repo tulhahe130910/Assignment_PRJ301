@@ -85,7 +85,15 @@ public class CartController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        Map<Integer, Cart> carts = (Map<Integer, Cart>) session.getAttribute("carts");
+        if (carts != null) {
+            // Get id user want to delete from cart
+            int id = Integer.parseInt(request.getParameter("id"));
+            carts.remove(id);
+            request.setAttribute("carts", carts);
+            request.getRequestDispatcher("view/Cart.jsp").forward(request, response);
+        }
     }
 
     /**

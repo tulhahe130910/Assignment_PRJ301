@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="box-food-text text-center">
                                         <div class="title-wrapper">
-                                            <span class="price-food-no-sale">${product.price}</span>
+                                            <span class="price-food-no-sale">${product.price} VND</span>
                                             <a href="detail-product?id=${product.id}"><p class="product-title">${product.name}</p></a>
                                         </div>
                                         <div class="add-to-cart-food">

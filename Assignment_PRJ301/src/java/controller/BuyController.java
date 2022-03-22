@@ -100,9 +100,12 @@ public class BuyController extends HttpServlet {
         }
         if(carts.containsKey(id)){
             carts.get(id).setQuantity(quantity);
+        }else{
+            Product p = new ProductDBContext().GetProductById(id);
+            carts.put(id, new Cart(p,quantity));
         }
         session.setAttribute("carts", carts);
-        response.sendRedirect("carts");
+        response.sendRedirect("cart");
     }
 
     /**

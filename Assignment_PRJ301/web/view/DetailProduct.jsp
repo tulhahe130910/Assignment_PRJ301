@@ -30,9 +30,9 @@
             <div class="site-section">
                 <div class="container">
                     <div class="row">
-                        <form action="buy" method="POST">
+                    <c:forEach items="${requestScope.product}" var="p">
+                        <form action="buy?id=${p.id}" method="POST" style="display: flex">
                             <div class="col-md-6">
-                            <c:forEach items="${requestScope.product}" var="p">
                                 <img src="image/${p.image}" alt="Image" class="img-fluid">
                             </div>
                             <div class="col-md-6" style="margin-top: 200px">
@@ -42,22 +42,16 @@
 
                                     <div class="mb-5">
                                         <div class="input-group mb-3" style="max-width: 120px;">
-                                            <div class="input-group-prepend">
-                                                <button class="btn btn-outline-primary js-btn-minus" type="button"><a href="detail-product?num=-1&id=${p.id}">&minus;</a></button>
-                                            </div>
-                                            <c:if test="${quantity!=null}">
-                                                <input type="text" class="form-control text-center" value="1" name="number">
-                                            </c:if>
-                                            <c:if test="${quantity==null}">
-                                                <input type="text" class="form-control text-center" value="1" name="number">
-                                            </c:if>
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-primary js-btn-plus" type="button"><a href="detail-product?num=1&id=${p.id}">&plus;</a></button>
-                                            </div>
+                                            <%--      <c:if test="${quantity!=null}">
+                                                <input type="number" class="form-control text-center" value="1" name="number">
+</c:if> --%>
+
+                                            <input type="number" class="form-control text-center" value="1" name="quantity">
+
                                         </div>
                                     </div>
                                     <input type="submit" value="Add To Cart"/>
-                                    <p><a href="buy?id=${p.id}" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
+<!--                                    <p><a href="buy?id=${p.id}" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>-->
                                 </div>
                             </c:forEach>
                         </div>
