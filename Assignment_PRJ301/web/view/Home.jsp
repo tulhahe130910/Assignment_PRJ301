@@ -68,7 +68,7 @@
                             <div class="tab-menu-wraper">
                                 <h3 class="tab-title">
                                     <b></b>
-                                    <span class="tab-title-content">NEW COLLECTION</span>
+                                    <span class="tab-title-content">TOP HIGH PRODUCT</span>
                                     <b></b>
                                 </h3>
                             </div>
@@ -77,23 +77,23 @@
 
                     <div id="tab-1" class="row tab-content row-show ">
                         <div class="row">
-                        <c:forEach items = "${requestScope.listProduct}" var="product">
+                        <c:forEach items = "${requestScope.top9product}" var="product">
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 my-col-fod" >
                                 <div class="box-shadow">
                                     <div class="food-menu1-show">
                                         <img src="image/${product.image}" alt="T-shirt">
                                         <div class="ovrly"></div>
                                         <div class="buttons-img">
-                                            <a href="#" class="fa fa-link"></a>
+                                            <a class="fa fa-link"></a>
                                         </div>
                                     </div>
                                     <div class="box-food-text text-center">
                                         <div class="title-wrapper">
                                             <span class="price-food-no-sale">${product.price}</span>
-                                            <p class="product-title">${product.name}</p>
+                                            <a href="detail-product?id=${product.id}"><p class="product-title">${product.name}</p></a>
                                         </div>
                                         <div class="add-to-cart-food">
-                                            <a href="#" class="add-to-cart-a-food button-food-cart-more">Thêm vào Giỏ</a>
+                                            <a href="buy?id=${product.id}" class="add-to-cart-a-food button-food-cart-more">Thêm vào Giỏ</a>
                                         </div>
                                     </div>
                                 </div>

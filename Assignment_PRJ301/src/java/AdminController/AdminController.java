@@ -98,7 +98,7 @@ public class AdminController extends HttpServlet {
         request.setAttribute("total_product", total_product);
 
         //top 4 price product
-        List<Product> list4product = new ProductDBContext().TopProductPrice();
+        List<Product> list4product = new ProductDBContext().Top4ProductPrice();
         request.setAttribute("top4product", list4product);
 
         //profit week daily

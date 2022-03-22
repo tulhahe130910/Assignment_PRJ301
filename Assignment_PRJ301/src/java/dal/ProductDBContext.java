@@ -239,8 +239,26 @@ public class ProductDBContext extends DBContext {
         return n;
     }
 
-    public List<Product> TopProductPrice() {
+    public List<Product> Top4ProductPrice() {
         String sql = "Select Top 4 p.product_id, p.product_name, p.product_price, p.product_quantity, p.product_image, p.category_id, c.category_name from [Product] p \n"
+                + " inner join Category c on (p.category_id = c.category_id) order by p.product_price desc";
+        List<Product> list = new ArrayList<>();
+        try {
+
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category c = new Category(rs.getInt("category_id"), rs.getString("category_name"));
+                Product p = new Product(rs.getInt("product_id"), rs.getString("product_name"), rs.getFloat("product_price"),
+                        rs.getInt("product_quantity"), rs.getString("product_image"), c);
+                list.add(p);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
+    public List<Product> Top9ProductPrice() {
+        String sql = "Select Top 9 p.product_id, p.product_name, p.product_price, p.product_quantity, p.product_image, p.category_id, c.category_name from [Product] p \n"
                 + " inner join Category c on (p.category_id = c.category_id) order by p.product_price desc";
         List<Product> list = new ArrayList<>();
         try {

@@ -91,7 +91,18 @@ public class BuyController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int id = Integer.parseInt(request.getParameter("id"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        HttpSession session = request.getSession();
+        Map<Integer,Cart> carts = (Map<Integer,Cart>)session.getAttribute("carts");
+        if(carts == null){
+            carts = new LinkedHashMap<>();
+        }
+        if(carts.containsKey(id)){
+            carts.get(id).setQuantity(quantity);
+        }
+        session.setAttribute("carts", carts);
+        response.sendRedirect("carts");
     }
 
     /**

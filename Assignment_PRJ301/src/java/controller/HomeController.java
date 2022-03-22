@@ -64,9 +64,11 @@ public class HomeController extends HttpServlet {
         CategoryDBContext categorydb = new CategoryDBContext();
         ProductDBContext productdb = new ProductDBContext();
         List<Category> listCate = categorydb.GetAllCategory();
-        List<Product> listProduct = productdb.GetProduct();
+//        List<Product> listProduct = productdb.GetProduct();
+        List<Product> list9product = new ProductDBContext().Top9ProductPrice();
+        request.setAttribute("top9product", list9product);
         request.setAttribute("listCate", listCate);
-        request.setAttribute("listProduct", listProduct);
+//        request.setAttribute("listProduct", listProduct);
         request.getRequestDispatcher("view/Home.jsp").forward(request, response);
     }
 

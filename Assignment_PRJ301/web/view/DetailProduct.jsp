@@ -30,33 +30,42 @@
             <div class="site-section">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6">
+                        <form action="buy" method="POST">
+                            <div class="col-md-6">
                             <c:forEach items="${requestScope.product}" var="p">
-                            <img src="image/${p.image}" alt="Image" class="img-fluid">
+                                <img src="image/${p.image}" alt="Image" class="img-fluid">
                             </div>
                             <div class="col-md-6" style="margin-top: 200px">
                                 <div class="asds" style="margin-left: 50px">
-                                <h2 class="text-black">${p.name}</h2><br>
-                                <p><strong class="text-primary h4">${p.price}VND</strong></p><br>
-                                </c:forEach>
-                                <div class="mb-5">
-                                    <div class="input-group mb-3" style="max-width: 120px;">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                                        </div>
-                                        <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                    <h2 class="text-black">${p.name}</h2><br>
+                                    <p><strong class="text-primary h4">${p.price}VND</strong></p><br>
+
+                                    <div class="mb-5">
+                                        <div class="input-group mb-3" style="max-width: 120px;">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-primary js-btn-minus" type="button"><a href="detail-product?num=-1&id=${p.id}">&minus;</a></button>
+                                            </div>
+                                            <c:if test="${quantity!=null}">
+                                                <input type="text" class="form-control text-center" value="1" name="number">
+                                            </c:if>
+                                            <c:if test="${quantity==null}">
+                                                <input type="text" class="form-control text-center" value="1" name="number">
+                                            </c:if>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-primary js-btn-plus" type="button"><a href="detail-product?num=1&id=${p.id}">&plus;</a></button>
+                                            </div>
                                         </div>
                                     </div>
+                                    <input type="submit" value="Add To Cart"/>
+                                    <p><a href="buy?id=${p.id}" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
                                 </div>
-                                <p><a href="buy?id=1" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
-                            </div>
-                            </div>
-                    </div>
+                            </c:forEach>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <br>
-            <jsp:include flush="true" page="../banner/Footer.jsp"></jsp:include>
-            </body>
-            </html>
+        </div>
+        <br>
+        <jsp:include flush="true" page="../banner/Footer.jsp"></jsp:include>
+    </body>
+</html>

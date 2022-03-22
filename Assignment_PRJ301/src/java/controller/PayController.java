@@ -106,6 +106,7 @@ public class PayController extends HttpServlet {
             int orderid = orderdb.CreateOrderAndReturnId(o);
             orderdb.SaveOrderDetail(orderid, carts);
             session.removeAttribute("carts");
+            session.removeAttribute("total");
             response.sendRedirect("home");
         }
         

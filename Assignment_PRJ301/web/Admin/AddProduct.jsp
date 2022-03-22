@@ -60,9 +60,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Image product upload</label>
-<!--                                    <input type="text" name="image" class="file-upload-default">-->
+                                    <input type="file" name="image" class="file-upload-default">
                                     <div class="input-group col-xs-12">
-                                        <input type="text" name="image" class="form-control file-upload-info"  placeholder="Upload Image">
                                     </div>
                                 </div>
                                 <div class="form-group">

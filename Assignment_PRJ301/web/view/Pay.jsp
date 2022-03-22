@@ -43,8 +43,9 @@
                         </div>
                         <div class="row row-center">
                             <div class="col-sm-6 col-xs-12">
+                            <c:if test="${sessionScope.user==null}">
                                 <form  class="check-out check-out-peyment" method="POST" name="check-peyment" action="pay">
-                                <c:forEach items="${requestScope.list}" var="l">
+
                                     <div class="title-header">
                                         <h2 class="content-title">Thông tin giao hàng</h2>
                                     </div>
@@ -52,30 +53,67 @@
                                         <p class="form-firstname form-first" id="firstname-form">
                                             <label for="firstname-billing">Tên*</label>
                                             <input type="text" class="input-text" name="name" id="firstname-billing"
-                                                   autocomplete="Nhập Tên" autofocus="autofocus" value="${l.username}">
+                                                   autocomplete="Nhập Tên" autofocus="autofocus" >
                                         </p>
                                         <p class="form-nth-2 form-first" id="adress-form">
                                             <label for="billing-address">Địa chỉ*</label>
                                             <input type="text" class="input-text" name="address" id="billing-address"
-                                                   autocomplete="Nhập địa chỉ" autofocus="autofocus" value="${l.address}">
+                                                   autocomplete="Nhập địa chỉ" autofocus="autofocus" >
                                         </p>
                                         <p class="form-phone form-first" id="phone-form">
                                             <label for="billing-phonen">Số điện thoại*</label>
                                             <input type="text" class="input-text" name="phone" id="billing-phone"
-                                                   autocomplete="Nhập sdt" autofocus="autofocus" value="${l.phone}">
+                                                   autocomplete="Nhập sdt" autofocus="autofocus">
                                         </p>
                                         <p class="form-comment form-first" id="form-comment">
                                             <label for="oder-comment">Ghi chú thêm*</label>
                                             <textarea class="input-comment" id="oder-comment" name="note"
-                                                      placeholder="Ghi chú thêm về đơn hàng, ví dụ: thời gian nhận hàng địa chỉ chi tiết hơn.."></textarea>
+                                                      placeholder="Ghi chú thêm về đơn hàng, ví dụ: thời gian nhận hàng địa chỉ chi tiết hơn..">
+                                            </textarea>
                                         </p>
                                         <br>
                                         <p>
                                             <input type="submit" name="submit" value="Xác nhận">
                                         </p>
-                                    </c:forEach>
-                                </div>
-                            </form>
+
+                                    </div>
+                                </form>
+                            </c:if>
+                            <c:if test="${sessionScope.user!=null}">
+                                <form  class="check-out check-out-peyment" method="POST" name="check-peyment" action="pay">
+                                    <c:forEach items="${requestScope.list}" var="l">
+                                        <div class="title-header">
+                                            <h2 class="content-title">Thông tin giao hàng</h2>
+                                        </div>
+                                        <div class="input-payment-contain">
+                                            <p class="form-firstname form-first" id="firstname-form">
+                                                <label for="firstname-billing">Tên*</label>
+                                                <input type="text" class="input-text" name="name" id="firstname-billing"
+                                                       autocomplete="Nhập Tên" autofocus="autofocus" value="${l.username}">
+                                            </p>
+                                            <p class="form-nth-2 form-first" id="adress-form">
+                                                <label for="billing-address">Địa chỉ*</label>
+                                                <input type="text" class="input-text" name="address" id="billing-address"
+                                                       autocomplete="Nhập địa chỉ" autofocus="autofocus" value="${l.address}">
+                                            </p>
+                                            <p class="form-phone form-first" id="phone-form">
+                                                <label for="billing-phonen">Số điện thoại*</label>
+                                                <input type="text" class="input-text" name="phone" id="billing-phone"
+                                                       autocomplete="Nhập sdt" autofocus="autofocus" value="${l.phone}">
+                                            </p>
+                                            <p class="form-comment form-first" id="form-comment">
+                                                <label for="oder-comment">Ghi chú thêm*</label>
+                                                <textarea class="input-comment" id="oder-comment" name="note"
+                                                          placeholder="Ghi chú thêm về đơn hàng, ví dụ: thời gian nhận hàng địa chỉ chi tiết hơn.."></textarea>
+                                            </p>
+                                            <br>
+                                            <p>
+                                                <input type="submit" name="submit" value="Xác nhận">
+                                            </p>
+                                        </c:forEach>
+                                    </div>
+                                </form>
+                            </c:if>
                         </div>
                         <div class="col-sm-6 col-xs-12"></div>
                     </div>
